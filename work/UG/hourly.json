@@ -1,0 +1,302 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "$$hashKey": "object:948",
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Merge Hourly check and visualize it over Grafana",
+  "editable": true,
+  "gnetId": 14448,
+  "graphTooltip": 0,
+  "id": 17,
+  "iteration": 1694420865396,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "HourlyCheck",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "success"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "NONE"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/.*/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.0.6",
+      "targets": [
+        {
+          "format": "table",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT script_status  FROM hourly_check.scripts WHERE script_status = 'sucess' as SUCESS  AND tbl_dt >= $__timeFrom() AND tbl_dt <= $__timeTo()",
+          "refId": "Success",
+          "select": [
+            [
+              {
+                "params": [
+                  "wait_time_secs"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hourly_check.scripts",
+          "timeColumn": "tbl_dt",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT script_status  FROM hourly_check.scripts WHERE script_status = '' as NONE  AND tbl_dt >= $__timeFrom() AND tbl_dt <= $__timeTo()",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "duration"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hourly_check.scripts",
+          "timeColumn": "tbl_dt",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT script_status  FROM hourly_check.scripts WHERE script_status = 'failed' as FAILED  AND tbl_dt >= $__timeFrom() AND tbl_dt <= $__timeTo()",
+          "refId": "Failed",
+          "select": [
+            [
+              {
+                "params": [
+                  "duration"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "hourly_check.scripts",
+          "timeColumn": "tbl_dt",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        },
+        {
+          "format": "table",
+          "group": [],
+          "hide": false,
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM \"Type\"",
+          "refId": "Type",
+          "select": [],
+          "table": "\"Type\"",
+          "timeColumn": "",
+          "timeColumnType": "",
+          "where": []
+        }
+      ],
+      "title": "Airflow Status",
+      "type": "stat"
+    }
+  ],
+  "refresh": "1h",
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "HourlyCheck",
+        "definition": "select output from hourly_check.scripts ",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Output",
+        "multi": true,
+        "name": "Dags",
+        "options": [],
+        "query": "select output from hourly_check.scripts ",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "table": [
+    {
+      "Type": "HDFS",
+      "Name": "HDFS_Hot_Storage",
+      "Message": "HDFS Hot Storage Usage %",
+      "Red": "79-n",
+      "Amber": "65-79",
+      "Green": "60-65"
+    },
+     {
+      "Type": "HDFS",
+      "Name": "HDFS_Warm_Storage",
+      "Message": "HDFS_Warm_Storage %",
+      "Red": "79-n",
+      "Amber": "65-79",
+      "Green": "60-65"
+    },
+	{
+      "Type": "DFS",
+      "Name": "DFS_Incoming count",
+      "Message": "DFS_Incoming",
+      "Red": "12000 - n",
+      "Amber": "8000 - 12000",
+      "Green": "5000 - 7000"
+    },{
+      "Type": "DFS",
+      "Name": "DFS Storage BSL2",
+      "Message": "DFS_Storage",
+      "Red": "75-n",
+      "Amber": "65-75",
+      "Green": "60-65"
+    }
+  ],
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Hourly Check",
+  "uid": "n1W2TwJVz",
+  "version": 17
+}

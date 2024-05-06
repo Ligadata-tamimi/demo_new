@@ -1,0 +1,1891 @@
+Night Shift activity 
+================================================================================================================================
+
+ mv `ls | head -10` /mnt/beegfs_bsl2/production/ftpin/PRS_1/ /mnt/beegfs_bsl2/production/ftpin/PRS/ 
+
+{"date":"20230705"}
+
+sudo su - oracle
+sudo su - daasuser
+
+T0mimimimi@001
+
+tamimim
+Connections@@079
+passwords@@123456
+Passwords@@123456
+
+sftp EVA_JUMO@10.156.115.120
+
+User: LigaData.vnc@gmail.com
+Pass:
+Ligadata@2020
+window passwd : 123456
+
+LigaData@2019
+
+Ambari
+reader
+P@ssw0rd@3211
+
+VPN
+tamimim
+baE7@8wHdxGc7yQ
+Connections@1998
+password@123456
+
+VPNusername : tamimim
+== UG VNC ==
+Email: Mhtamimi11@gmail.com
+Pass: Tamimi@@123
+vnc@@2020
+
+password@123456
+T0mimimimi@000012
+Connections@90
+Forticlient#2022
+Password@12345678900
+API URL 
+Daas
+P@ssw0rd@1234
+
+Office
+m.tamimi@ligadata18.onmicrosoft.com
+QZ4X%PNtN(e7wp-
+
+winscp
+
+VNC
+email : mhtamimi11@gmail.com
+pass : Tamimi@@123
+
+VPN:
+MTNUGA\tamimim
+https://mtnonline.mtn.co.ug/Login.aspx
+
+shell user :
+mtamimi
+k9pN8mwu6fTY45yH@
+
+k9pN8mwu6fTY45yH@
+
+
+GMAIL_Password
+T0mimimimi@001
+Tamimi@@1122
+T0mimimimi@0000
+Tamimi@1234
+P@ssw0rd@321
+tamimim
+Ligadata@654321
+212.88.98.34
+
+WinSCP:
+
+Software@654321
+qaderr
+Connections@@123456
+
+--- restart presto old ---
+cd /opt/presto/bin 
+./launcher restart
+
+
+cat /etc/passwd/
+
+=======presto_cli=======
+LD 
+/opt/presto/bin/presto --server 10.156.42.144:7099 --catalog hive --schema devdata
+MTN
+/opt/presto/bin/presto --server 10.156.42.178:6099 --catalog hive  -schema devdata
+
+====zabbix=====
+sudo systemctl restart zabbix-agent
+
+hdfs dfs -ls hdfs://daasug/user/daasuser/FlareData/Feeds/ER_Trans
+hdfs dfs -ls hdfs://daasug/user/daasuser/FlareData/Feeds/LOYALTY_EARN
+dbeaver
+jdbc:presto://ugmpdaasnode-28.mtn.co.ug:7766/hive?SSL=true&SSLKeyStorePath=c:/keystore2.jks&SSLKeyStorePassword=enzoslR722$&SSLTrustStorePath=c:/keystore2.jks&SSLTrustStorePassword=enzoslR722$
+===DLM====
+python  /mnt/beegfs_bsl2/Tools/CSV_Generator_V2/conf/csv_extractor_usage_recharge_and_revenue_rental_rerun.py 20230410 
+
+/mnt/beegfs_apidfs/API/production/apiextraction/scripts/LEA_UNRATED_USAGE_REPORT_API_INCOMING_ExtConv.sh
+======Extract one feed=======
+ccn_cdr_gprs_detail
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/extract_oneday_onefeed_DAS.sh 20230415  subggsn
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/extract_oneday_onefeed_DAS.sh 20230410  subpm_rated_cdrs_b
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/extract_oneday_onefeed_DAS.sh 20230410  subsdp_bundle_summary
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/extract_oneday_onefeed_DAS.sh 20230410 subgsm_service_mast
+
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/extract_mfs_api.sh 20230410  
+======Rerun_old_CDR========
+80G     20220127
+bash /mnt/beegfs_bsl2/production/fileOps/cdrs_miniTarring_rerun.sh 20240202 20240202 PCRF
+bash /mnt/beegfs_bsl2/Tools/DoubleTarring/DoubleTarring_cron_encryption.sh 20230815 20230815 SDP_CDR_CS18
+bash /mnt/beegfs_bsl2/Tools/Reprocess_jobs/untar_Tool_encryption.sh 20240201 PCRF
+
+bash /mnt/beegfs_bsl2/Tools/DoubleTarring/untar_double_and_reprocess_path.sh 20231217 PM_RATED_CDRS /mnt/beegfs_bsl2/production/archived/PM_RATED_CDRS /mnt/beegfs_bsl2/PM_RATED_20231217/
+
+reprocess fin_log
+ time java -Xmx30g -Xms30g -Dlog4j.configurationFile=/mnt/beegfs_bsl2/production/fileOps/log4j2.xml -Dlog4j2.formatMsgNoLookups=true -jar /mnt/beegfs_bsl2/Jars/FileOps_2.11-3.0.00.2034.jar -in "/mnt/beegfs_bsl2/production/archived/ECW-financiallog/20220923/20220923" -out $report_folder -od -tf 10 -nt 32 -dp 15 -of -xvzf "/mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS/ECW-financiallog/" -ts 80 -kmsPath /mnt/beegfs_bsl2/production/fileOps/kmsconnection.json -nosim -lbl "FIN_LOG_reprocess" 2>&1
+
+bash /mnt/beegfs_bsl2/Tools/Reprocess_jobs/untar_Tool_encryption.sh 20220127 GGSN_CDR
+
+bash /mnt/beegfs_bsl2/production/fileOps/sdp_dumps_minitarring_encryption.sh $1 $2
+
+bash /mnt/beegfs_bsl2/production/fileOps/miniTarring_encryption.sh $1  
+bash /mnt/beegfs_bsl2/Tools/DoubleTarring/DoubleTarring_cron_encryption.sh $1  $2
+
+===AIR_CDR===
+
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/Copy_Air_Cdr_Ext.sh 20230410 
+
+==Consolidation_one_feed===subretaindata_customersubject
+bash /mnt/beegfs_bsl2/Tools/Consolidation/Consolidation_one_feed.sh CCN_CDR_detail 20230410 
+
+==kinit==
+kinit -kt /etc/security/keytabs/daasuser.keytab daasuser@MTN.COM
+===========================================================================================================================================
+format alluxio node 206
+feeds node 203 move to incoming
+APIS node 204 , 171
+benchmark node 92 : /home/daasuser/benchmark_allSto92.sh
+===========================================================================================================================================
+Every_Hour 
+DLM_USAGE_RATED runs on node 204 
+recharge , revenue_rental , revenue_momo on node 209 
+===========================================================================================================================================
+minitar_cdr on node  151
+minitar on node 205
+minitarring today 173
+minitarring_CDR today 207 
+move_ug 153 
+facebook job can be ran at node 215
+===========================================================================================================================================
+presto 
+
+mtn_presto_stop_worker 
+
+production_presto_worker_stop
+
+API_Tomcat 
+
+on 10.156.42.89
+
+Api_restart
+
+at  10.156.42.89
+10.156.42.209 or 208 or 204
+===========================================================================================================================================
+daily command 
+
+Excel useful formula 
+transpose 
+
+netsh wlan show profile Umniah-516E key=clear
+
+ hive add partition alter table add partition 
+
+ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+
+bzip2 -d 
+bzip2 -k
+
+du -hs  |sort -rh |head -5
+sed -i -e 's|"||g' Final_recycle_march.csv
+tr -d '[]' < test.csv > test2.csv 
+
+mv `ls | head -3000` /mnt/beegfs_bsl2/production/archived/SDP_CDR_CS18/20230410 /03/
+
+dmesg -T | grep sdk
+
+scp (IP_NODE):/path/* /path/
+
+replace string inside bash script 
+
+alter table devdata.ECW_EOD_TRANSACTIONS drop partition ( tbl_dt=20230714 )
+ater table feeds.ggsn_cdr add partition (tbl_dt=20230920,hour=20) location 'hdfs://bn/user/daasuser/FlareData/Feeds/GGSN_CDR/tbl_dt=20230920/hour=20'
+alter table feeds.MOMO_USER_ACCOUNT_BALANCES drop partition ( tbl_dt=20230624);
+
+alter table feeds.E_CS16_SDP_CDR add partition  (tbl_dt=20230720) location 'hdfs://snncluster/user/daasuser/FlareDataProd/Feeds/E_CS16_SDP_CDR/tbl_dt=20230720/'
+
+alter table devdata.ECW_EOD_TRANSACTIONS  add partition  (tbl_dt=20230714) location 'hdfs://daasug/encryption_zone/daasuser/FlareData/Feeds/ECW_EOD_TRANSACTIONS/tbl_dt=20230714/'
+
+alter table devdata.ccn_cdr_cs18 drop partition ( tbl_dt=20230410 ,servicetypeenrich='CONTENT' ); 
+alter table devdata.CCN_CDR_CS18 add partition (tbl_dt=20230410 ,servicetypeenrich='CONTENT') location '/encryption_zone/daasuser/FlareData/Feeds/CCN_CDR_CS18/tbl_dt=20230410 /servicetypeenrich=CONTENT/'
+
+alter table devdata.SDP_DUMP_DA drop partition ( tbl_dt=20240115);
+alter table feeds.ggsn_cdr ADD IF NOT EXISTS PARTITION  (tbl_dt=20230725,hour=01) location 'hdfs://bn/user/daasuser/FlareData/Feeds/momo_transaction/tbl_dt=20230725';
+
+hadoop fs -du -h hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData/*/Month202306 | grep 20230601  |grep -i ccn  |wc -l 
+adoop fs -du -h hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData/*/Month202206 | grep 20220603  |grep -i ccn  |wc -l 
+===========================================================================================================================================
+Repair table 
+bash   /mnt/beegfs_bsl2/tamimi/BSL_feeds.sh
+alter table DEVDATA.LOYALTY_BURN add partition (tbl_dt=20211118);
+show create table kamanja_live.ayboaevents;
+
+EODs
+
+ll /mnt/beegfs_bsl2/production/archived/endofdayreport-* |grep -i 20220729
+ll /mnt/beegfs_bsl2/production/archived/ACCOUNT_HOLDER_DUMP |grep -i 20220729
+ls -ltr /mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS
+===========================================================================================================================================
+API USERS
+
+select count(*) ,userid from devdata.api_log where tbl_dt betwefen 20210101 and 20210331 group by 2 order by 2 ;
+
+===========================================================================================================================================
+HDFS info 
+
+---HDFS archive -----
+
+cd  /nfs/share/Archive
+
+old archive 
+
+/user/daasuser/archive/ECW-financiallog/20220401/
+
+new archive
+
+hdfs dfs -ls /encryption_zone/daasuser/archive/ECW-financiallog/20220401/
+
+hdfs://daasug/user/daasuser/FlareData/Feeds/ECW_EOD_USER_ACCOUNT/tbl_dt=20200320/Data7-1-20200320T0430-1584668401.dat
+ 
+
+  hdfs debug recoverLease -path  /user/daasuser/Kamanja_Live/DPI_CDR/tbl_dt=20230628/hr=12/Data45-0-20230629T1430-1688050747.dat at position 0
+
+
+ hdfs debug recoverLease -path hdfs://daasug/encryption_zone/daasuser/FlareData/Feeds/ECW_EOD_TRANSACTIONS/tbl_dt=20220714/Data20-0-20220804T1200-1659603700.dat at position 0
+ Trash path 
+hadoop fs -rm -R -skipTrash
+
+hadoop fs -ls /user/daasuser/.Trash/Current/user/daasuser/FlareData/Feeds
+
+hadoop fs -ls  /daasug/user/daasuser/
+
+
+
+hdfs://daasug/user/tamimi/AIR_CDR/
+===========================================================================================================================================
+ Validation
+ bash /mnt/beegfs_bsl2/Tools/Validation_pre_UG/bin/runValidationAuto.sh
+
+f
+ bash /mnt/beegfs_bsl2/Tools/Validation_pre_UG/bin/Validation_Tool_rerun_range.sh 20230410 
+0
+
+bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20221012  PM_RATED_CDRS BSL.conf true
+bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410 CCN_CDR_CS18 BSL.conf true
+
+  bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20240201  PCRF  BSL.conf true
+
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20221114 FIN_LOG BSL.conf true
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f PCRF -d 20240201 -c config.json
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f UG_2GCell_Daily_QoS,UG_3GCell_Daily_QoS,UG_4GCell_Daily_QoS,UG_SITE_ENGAGEMENT_FB -d 20221104 -c config.json
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f GSM_SERVICE_MAST -d 20231220 -c config.json
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f SDP_DUMP_UT,SDP_DUMP_UC,SDP_DUMP_ACC,SDP_DUMP_SUBSCRIBER,SDP_DUMP_OFFER,SDP_DUMP_FAF_ACCOUNT,SDP_DUMP_FAF_LIST_SUBS,SDP_DUMP_DA  -d 20230315  -c config.json
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f SDP_DUMP_UC  -d 20240214 -c config.json
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f CCN_CDR_CS18 -d 20230517 -c config.json
+
+python3.6 /mnt/beegfs_bsl2/Tools/VALIDATION_TOOL/bin/validationTool.py -f PM_RATED_CDRS -d 20221012  -c config.json
+
+python3.9 /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.py -s 20221208 -q bsl_daily_unearned_revenue_report 
+
+  bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20221104 UG_3GCell_Daily_QoS  Others.conf true
+
+    bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_CDR_CS18  BSL.conf true
+
+
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_SUBSCRIBER  BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_DA  BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_ACC BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_UC BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_UT BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_FAF_ACCOUNT BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_FAF_LIST_SUBS BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_OFFER BSL.conf true
+   bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_SUBSCRIBER,SDP_DUMP_DA,SDP_DUMP_FAF_LIST_SUBS BSL.conf true
+
+ bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20230410  SDP_DUMP_UC,SDP_DUMP_FAF_LIST_SUBS,SDP_DUMP_DA  BSL.conf true
+===========================================================================================================================================
+Ayoba D -1 
+
+bash /mnt/beegfs_bsl2/Tools/Extract/Ayoba/Extract_Ayoba_SDP_D_1.sh
+===========================================================================================================================================
+API_logs
+
+
+/mnt/beegfs_apidfs/API/production/apilogs/apiextraction 20230410 
+
+bash /mnt/beegfs_bsl2/Tools/Dimsub/zaid/apicheck.sh 20210416 20230410 
+
+check meta and storage nodes
+
+bash /mnt/beegfs_bsl2/tamimi/meta_storage.sh
+
+ beegfs-ctl --listtargets --cfgFile=/etc/beegfs/apidfs.d/beegfs-client.conf --nodesfirst --longnodes --state --nodetype=meta --mirrorgroups
+
+beegfs-ctl --listtargets --cfgFile=/etc/beegfs/bsl2.d/beegfs-client.conf --nodesfirst --longnodes --state --nodetype=meta --mirrorgroups
+
+bash /mnt/beegfs_bsl2/Tools/Rebhi/Generate_KPIs_And_SMS.sh 20210618
+
+to check the feeds 
+bash /mnt/beegfs_bsl2/Tools/Dimsub/zaid/feedscheck.sh 20220709 20230410 
+python /mnt/beegfs_bsl2/Tools/Dimsub/zaid/feedscheck.py 20230410  20230410 
+
+
+
+PM RATED START   at 1:05 ON Noode 204  for PM rated      /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS             
+												
+                        ip : 10.156.98.11
+											               tail -f /mnt/beegfs_bsl2/Logs/Extract/PM_RATED_CDRS/20230410 //20230410 _PM_RATED_CDRS.log
+zcat /mnt/beegfs_bsl2/Tmp/Extract/PM_RATED_CDRS/tmp/20210521/* |wc -l
+
+zcat /mnt/beegfs_bsl2/Tmp/Extract/GSM_SERVICE_MAST/tmp/20230410 /* |wc -l
+										
+								tail -f /mnt/beegfs_bsl2/Logs/Extract/PM_RATED_CDRS/20210421//20210421_PM_RATED_CDRS.log
+
+tail -f /mnt/beegfs_bsl2/Logs/Extract/PM_RATED_CDRS/20201207//20201207_PM_RATED_CDRS.log
+	 
+       	select tbl_dt,count(*) from devdata.pm_rated_cdrs where tbl_dt > 20230410  group by tbl_dt order by tbl_dt;
+
+
+        and the job will run for (will get the current date - 1 hour ) then the extract run for it and the below it’s the job 
+
+=============================================================================PM_RATED_NEW======================================================
+
+Jobs
+bash /mnt/beegfs_bsl2/Tools/Send_SMS_Messages/KPI_Message_script_check_Tam.sh
+
+bash /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/extract_PM_RATED_CDRS_rerun_Split.sh <date>
+
+bash /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/extract_PM_RATED_CDRS_hourly.sh
+
+
+bash /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/extract_PM_RATED_CDRS_hourly.sh 20220820 01 01
+
+rerun : bash /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/extract_PM_RATED_CDRS_hourly.sh 20220208 10 11
+
+bash /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/extract_PM_RATED_CDRS_hourly.sh 20230410  20 21
+Query
+select count(*) as recordecount, split_part(split_part(split_part(rated_on,'-',3),' ',2),':',1) hour ,tbl_dt  from devdata.pm_rated_cdrs where 
+tbl_dt =20230410  group by tbl_dt,split_part(split_part(split_part(rated_on,'-',3),' ',2),':',1)   order by split_part(split_part(split_part(rated_on,'-',3),' ',2),':',1),tbl_dt
+
+===========================================================================================================================================
+hadoop fs -du -h hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData/*/Month202305 | grep 20230522 |grep -i ccn |wc -l
+
+	     	bash /mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/extract_PM_RATED_CDRS_rerun.sh 20210615 #for re_run
+
+connection.string=jdbc:oracle:thin:YousefA/*****@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.156.201.30))(CONNECT_DATA=(SERVER=DEDICATED)(PORT=1521)(SERVICE_NAME=TTICB)))
+
+/mnt/beegfs_bsl2/Tools/Extract/config/PM_RATED_CDRS_config.properties
+
+/mnt/beegfs_bsl2/Tools/Extract/PM_RATED_CDRS/PM_RATED_CDRS_config.properties
+
+ability feeds
+
+/mnt/beegfs_bsl2/Tools/Extract/config/Ability_config.properties
+
+
+select * from PM_CLIENT_PROD_UPG.PM_RATED_CDRS where RATED_ON between to_date('20210417 17:00:00','YYYYMMDD HH27:MI:SS') and to_date('20210417 17:59:59','YYYYMMDD HH27:MI:SS')
+
+
+connection.string=jdbc:oracle:thin:YousefA/"Kampala2020#"(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.156.201.119)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=TTABLN)))
+===========================================================================================================================================
+ExtractAbilityTables will start at 1:30 on node 201
+
+tail -f /tmp/cronjoblogs/ExtractAbilityTables.log
+
+extract for BSL will start at 1:40 on node 92 
+
+  to check the extraction  
+
+hadoop fs -du -h hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData/* 20230410  | grep 20230410   |grep -i ccn |wc -l
+#ccn must be 10 and other 30 
+
+tail -f /tmp/cronjoblogs/extract.log
+log : /mnt/beegfs_bsl2/Flare_bsl/logs/DataExtraction/
+===========================================================================================================================================
+*Dumps
+
+ls -d -l /mnt/beegfs_bsl2/FlareDataTest//SDP_DUMP_/processed/ |grep 20240315
+ls -d -l /mnt/beegfs_bsl2/FlareDataTest//SDP_DUMP_/incoming/ |grep 20240315
+ll  /mnt/beegfs_bsl2/FlareDataTest/SDP_DUMP_*/Splitted/ |grep 20240315
+ll  /mnt/beegfs_bsl2/FlareDataTest/SDP_DUMP_*/tmp/ |grep 20240315
+
+
+/mnt/beegfs_bsl2/production/archived/original_file
+
+ls -d -l /mnt/beegfs_bsl2/FlareData/SDP/SDP_DUMP_*/ |grep -i 20240315 |wc -l
+
+ ls -d -l /mnt/beegfs_bsl2/production/archived/SDP_DUMP_*/20240315
+
+ll /mnt/beegfs_bsl2/production/ftpin/SDP/SDP_DUMP_*/ |grep -i 20230410 |wc -l
+
+ll /mnt/beegfs_bsl2/production/ftpin/SDP/SDP_DUMP* | grep -i 20230410 
+
+this for move all 
+bash /mnt/beegfs_bsl2/Tools/MoveToIncoming/Move_Live_SDP_DUMPS.sh  
+
+this for one by one 
+bash /mnt/beegfs_bsl2/Tools/Dimsub/zaid/Move_Dumps.sh
+
+/mnt/beegfs_bsl2/Tools/MoveToIncoming/SDP_DUMPS_rerun.sh
+
+to check files in incoming
+
+ls -l -d -ltr /mnt/beegfs_bsl2/FlareDataTest/SDP_DUMP_*/incoming/* |grep -i 20230410 
+/mnt/beegfs_bsl2/FlareDataTest/GSM_SERVICE_MAST/
+*Dumps query 
+
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_DA where tbl_dt>=20201125 group by tbl_dt order by tbl_dt;    
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_UT  where tbl_dt>20201125 group by tbl_dt order by tbl_dt;  
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_UC  where tbl_dt>=20201125 group by tbl_dt order by tbl_dt;   
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_ACC  where tbl_dt>=20201125 group by tbl_dt order by tbl_dt;  
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_SUBSCRIBER where tbl_dt>=20201125 group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.sdp_dump_offer where tbl_dt>=20201125 group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.sdp_dump_faf_account where tbl_dt>=20201125 group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.sdp_dump_faf_list_subs where tbl_dt>=20201125 group by tbl_dt order by tbl_dt;
+
+===========================================================================================================================================
+SDP_Bundles_populate when all dumps are up to date and trendy on node 133
+
+bash /mnt/beegfs_bsl2/Tools/SDP_Bundles_populate.sh
+
+select  tbl_dt ,count(*) from devdata.sdp_bundle_summary where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;
+
+===========================================================================================================================================
+select  tbl_dt ,count(*) from devdata.ccn_cdr_cs18 where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; #
+
+select tbl_dt , count(*) from devdata.cb_serv_addnl_attributes where tbl_dt>= 20230410  group by tbl_dt order by tbl_dt; #ability feeds
+
+select tbl_dt ,count(*) from devdata.GSM_SERVICE_MAST where tbl_dt between 20230410  and 20230410  group by tbl_dt order by tbl_dt; # AT 2:30 must be extracted to fill data in usage_rated table 
+
+select tbl_dt ,count(*) from devdata.er_agent where tbl_dt between 20230410  and 20230410  group by tbl_dt order by tbl_dt;
+
+hdfs dfs -rm -r hdfs://daasug/user/daasuser/FlareData/KPI/aggr_subscriber/source=GUSER/tbl_dt 20230410 
+
+===========================================================================================================================================
+Starts AT 2:35 AM on node 203 #when all good run generate KPI 
+bash $commonpath/bin/new_run_presto.sh 20230410  20230410  cfw_usage_rated      #related with Gsm_service_mast 
+bash $commonpath/bin/new_run_presto.sh  20230410  20230410  cfw_revenue_rental  #AIR_CDR must be match and up to date 
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_revenue_usage_based  #must the cfw_revenue_rental up to date 
+bash $commonpath/bin/new_run_presto.sh  20230410  20230410  cfw_usage_recharge  #fin_log and AIR_CDR #After this query we should run generate KPI on node 201
+bash $commonpath/bin/new_run_presto.sh 20230410  20230410  cfw_usage_data_content
+
+select date_key,  count (*) from cfw.usage_rated where date_key between 20201201  and 20230410   group by date_key order by date_key;
+
+select date_key,  count (*) from cfw.revenue_usage_based where date_key between 20201201  and 20230410   group by date_key order by date_key;
+
+select date_key,  count (*) from cfw.usage_recharge where date_key between 20201201  and 20230410   group by date_key order by date_key;
+
+select date_key,  count (*) from cfw.revenue_rental where date_key between 20201201  and 20230410   group by date_key order by date_key;
+===========================================================================================================================================
+for AIR_CDR_CS18
+
+* From source query 
+-----------                                                      
+select count(distinct file_name),sum(lines) from devdata.files_filesopps_summary_partition_pre where feed_name='AIR_CDR_CS18'
+and file_dt 20230410  and file_name not like '%tmp';
+ 
+* From Hive records query 
+----------
+select count(*),count(distinct concat(file_name,cast(file_offset as varchar))) from devdata.air_cdr_cs18
+where tbl_dt>=20201129 and file_name like '%AIR 20230410 %' and file_name not like '%tmp';
+
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh <feed_name> <date>
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh SDP_DUMP_DA  20240315
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh ECW_EOD_TRANSACTIONS  20220731
+dedup presto 
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh PCRF 20240201
+c
+
+dedup presto
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh GSM_SERVICE_MAST 20231220
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh ayobaevents 20220714
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh fin_log 20230410 
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh loyalty_earn 20220401
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh FIN_LOG 20230410 
+bash /mnt/beegfs_bsl2/Tools/DedupIncr_encryption/script/DedupInc_General_enc.sh SDP_DUMP_DA 20230410 
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr_encryption/script/DedupInc_General_enc.sh loyalty_earn 20220101
+
+INTERACTIONDETAIL
+ll /mnt/beegfs_bsl2/production/ftpin/AIR_CS18/* | wc -l 
+ALL count should be zero if not go to the below 
+	  
+    msck repair table devdata.adc;
+     ll /mnt/beegfs_bsl2
+    /production/archived/AIR_CDR_CS18 20230410 
+    
+bash /mnt/beegfs_bsl2/Tools/Rebhi/Remove_Duplicate_By_Schema_AND_Table.sh devdata sdp_dump_uc 20230410 
+
+select tbl_dt,count(*),count(distinct file_name),count(distinct concat(file_name,cast(file_offset as varchar))) from devdata.AIR_CDR_CS18 where tbl_dt > 20200430 and file_name like ' 20230410 %' group by tfbl_dt ;
+
+select origintimestamp,count(*) from devdata.air_cdr_cs18 where tbl_dt > 20230410  and origintimestamp >  20230410 0408%'  group by origintimestamp order by origintimestamp ;
+
+select count(*),count(distinct concat(file_name,cast(file_offset as varchar))) from devdata.air_cdr_cs18
+where tbl_dt>=20201129 and file_name like '%AIR 20230410 %' and file_name not like '%tmp';
+===========================================================================================================================================
+FIN_LOG report
+
+ MTN and DAAS compare 
+
+ select instruct_hdr_type,count(*) from feeds.fin_log_cfw where tbl_dt =20220105 group by instruct_hdr_type order by instruct_hdr_type ;
+
+ SOURCE_LINES 
+
+select count(distinct file_name),sum(lines) from devdata.files_filesopps_summary_partition_pre where feed_name='FIN_LOG' and file_dt 20230410  and file_name not like '%sha';   
+
+select count(distinct file_name),sum(lines) from devdata.final_feed_report where feed_name='FIN_LOG' and file_dt 20230410  and file_name not like '%sha'; 
+
+
+devdata.final_feed_report
+  HIVE_LINES 
+                                                                                                   
+select count(*),count(distinct concat(file_name,cast(file_offset as varchar))) from devdata.FIN_LOG where tbl_dt>=20201201 and file_name like ' 20230410 %' and file_name not like '%sha';   
+
+
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh ayobaevents 20220529
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_General.sh CCN_CDR_CS18 20231119
+bash /mnt/beegfs_bsl2/Tools/Reprocess_jobs/Reprocessing_Tool.sh 20220917 FIN_LOG
+
+
+
+if  ll /mnt/beegfs_bsl2/production/archived/ECW-financiallog/20200520  != 0
+     
+	 {
+       cd /mnt/beegfs_bsl2
+      /production/archived/ECW-financiallog 20230410  
+
+      mv 21/* /mnt/beegfs_bsl2
+     /production/ftpin/ECW_FEEDS/ECW-financiallog/
+      mv 22/* /mnt/beegfs_bsl2
+     /production/ftpin/ECW_FEEDS/ECW-financiallog/
+      mv 23/* /mnt/beegfs_bsl2
+     /production/ftpin/ECW_FEEDS/ECW-financiallog/
+
+
+hadoop fs -ls hdfs://daasug/user/daasuser/FlareData/Feeds/FIN_LOG/tbl_dt 20230410 /.D* 
+
+
+ll /mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS/ECW-financiallog/
+ll /mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS/financiallog 20230410 *
+ll /mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS/ECW-financiallog/financiallog- 20230410 *
+
+mv /mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS/ECW-financiallog/*20201112* /mnt/beegfs_bsl2/production/ftpin/ECW_FEEDS/ECW-financiallog/reprocess1
+
+select max(split(split(original_timestamp_enrich,'T')[2],':')[1]) from devdata.fin_log where tbl_dt 20230410 ;
+
+select substring(base_file_name,28,4) hr , count(*) cnt from devdata.pm_rated_cdrs where tbl_dt = 20201020 group by 1 order by 1;
+
+select distinct
+substr(file_name , index(file_name, '.')+1, index(file_name, '.log')- index(file_name, '.')-1 )   SEQUENCE
+FROM  devdata.fin_log
+where  tbl_dt = 20210730
+and file_name like '%20210730%'
+order by SEQUENCE ;
+
+
+
+select distinct 
+substr(replace(file_name, '.v1.0') , index(replace(file_name, '.v1.0'), '.')+1, index(replace(file_name, '.v1.0'), '.log')- index(replace(file_name, '.v1.0'), '.')-1 )   SEQUENCE
+FROM  devdata.fin_log
+where  tbl_dt = 20210729
+and  file_name not like '%financiallog.20190204092627.849255_test.log%'
+and upper(file_name) like '%FINANCIALLOG%'  
+and upper(file_name) like '%ECW%'
+and cast(substr(file_name, index(file_name, 'financiallog-')+13, 8)as bigint)=20210729
+-- between cast(date_format(date_add('day',-31,now()),'%Y%m%d') as bigint) 
+-- and cast(date_format(date_add('day',-1,now()),'%Y%m%d') as bigint)
+order by sequence asc;
+===========================================================================================================================================
+CCN_CDR_CS18
+MSCK REPAIR TABLE sources.XXBJPOS_MDS_CBS_INFO;
+alter table sources.XXBJPOS_MDS_CBS_INFO drop partition ( dateid=20240306);
+alter table feeds.MSC_VOICE_MO add partition ( tbl_dt=20240223);
+
+alter table devdata.ccn_cdr_cs18 drop partition ( tbl_dt=20230815 ,servicetypeenrich='DATA' ); 
+alter table devdata.CCN_CDR_CS18 add partition (tbl_dt=20230815 ,servicetypeenrich='DATA') location '/encryption_zone/daasuser/FlareData/Feeds/CCN_CDR_CS18/tbl_dt=20230815 /servicetypeenrich=DATA/';
+
+alter table add partition feeds.E_CS16_SDP_CDR location 'hdfs://snncluster/user/daasuser/FlareDataProd/Feeds/E_CS16_SDP_CDR/tbl_dt=20230713/'
+
+bash /mnt/beegfs_bsl2/Tools/rand/repair_ccn.sh
+
+select count(distinct file_name),sum(lines) from devdata.files_filesopps_summary_partition_pre where feed_name='CCN_CDR_CS18' and file_dt 20230410 ;
+
+select count(*),count(distinct concat(file_name,cast(file_offset as varchar))) from devdata.ccn_cdr_cs18 where tbl_dt> 20230410  and file_name like ' 20230410 %';
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_CCN_and_Detail.sh 20190927
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_CCN_and_Detail.sh 20220114
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_CCN_DETAIL.sh 20220117
+
+bash  /mnt/beegfs_bsl2/Tools/DQ/CS18_CCN_Dedup.sh 20220113 CCN_CDR_Detail_CS18
+
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh fin_log 20201030
+  
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh CCN_CDR_CS18  20230410  20230410 
+
+select tbl_dt,count(),count(distinct file_name),count(distinct concat(file_name,cast(file_offset as varchar))), ((count())-(count(distinct concat(file_name,cast(file_offset as varchar))))) as difference from devdata.CCN_CDR_CS18 where tbl_dt >= 20201210 and file_name like ' 20230410 %' group by tbl_dt order by tbl_dt;
+
+
+select 'devdata.CCN_CDR_CS18' TABLE_, max(substring(cast( current_time as varchar),01,2))Crnt_HR,cast( current_time as varchar)Crnt_TIME, max(TRY_CAST(format_datetime(from_unixtime((cast(kamanja_loaded_date as bigint))), 'yyyy-MM-dd HH:mm:ss') AS varchar)) MAX_HR_EVA, (cast( max(substring(cast( current_time as varchar),01,2)) as int ) - cast(substring(max(TRY_CAST(format_datetime(from_unixtime((cast(kamanja_loaded_date as bigint))) , 'yyyy-MM-dd HH:mm:ss') AS varchar)) ,12,2) as int)) HR_DiF_with_EVA_LOAD_DATE from devdata.CCN_CDR_CS18 where tbl_dt = cast(date_format(date_trunc('day', current_date), '%Y%m%d') as int);
+
+bash /mnt/beegfs_bsl2/Tools/Validation_Tool/bin/InvokeValidation_final.sh 20220428 ECW_OVERDRAFTLOG OTHERS.conf true 2>&1 | tee /mnt/beegfs_bsl2/Tools/Validation_Tool/logs/ValidationTool_$(date +%Y%m%d_%s).txt
+
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupInc_CCN_and_Detail.sh 20201127
+===========================================================================================================================================
+sdp_cdr_cs18 
+
+select count(distinct file_name),sum(lines) from devdata.files_filesopps_summary_partition_pre where feed_name='SDP_CDR_CS18' and file_dt 20230410 ;
+
+select count(*),count(distinct concat(file_name,cast(file_offset as varchar))) from devdata.sdp_cdr_cs18 where tbl_dt> 20230410  and file_name like ' 20230410 %';
+
+
+bash /mnt/beegfs_bsl2/Tools/DedupIncr/script/DedupIncr.sh -f  ccn_cdr_cs18_sms -p m1004 -d 20220114 -n 2 -r 2>&1 | tee /mnt/beegfs_bsl2/Tools/DedupIncr/summarylogs/DedupRun_m1004_$(date +%Y%m%d%H%M%S).txt
+
+bash /mnt/beegfs_bsl2/Tools/Reprocessing/scripts/runPCF_General.sh 20200621 ER_AGENT
+
+bash /mnt/beegfs_bsl2/Tools/Reprocess_jobs/Reprocessing_Tool.sh 20220713 CCN_CDR_CS18
+
+===========================================================================================================================================
+##insert_Fin_log on node 201
+
+ bash /mnt/beegfs_bsl2/Tools/Insert_Finlog_data.sh  #when it's match 
+
+ bash /mnt/beegfs_bsl2/Tools/DAAS_ECW_DATA_CHECK_D-1.sh
+--
+ bash /mnt/beegfs_bsl2/Tools/Insert_Finlog_data_oneday.sh 20220618 #rerun job
+--
+select tbl_dt, count(*) from feeds.fin_log_cfw where tbl_dt > 20201125 group by tbl_dt order by tbl_dt;
+
+select max(split(split(original_timestamp_enrich,'T')[2],':')[1]) from devdata.fin_log where tbl_dt=20230410 ;  ##Insert_Fin_log on node 201
+
+ bash /mnt/beegfs_bsl2/Tools/Insert_Finlog_data.sh 
+-----------
+The rerun bash /mnt/beegfs_bsl2/Tools/Insert_Finlog_data_oneday.sh 20210425 
+-----------
+select tbl_dt, count(*) from feeds.fin_log_cfw where tbl_dt > 20230410  group by tbl_dt order by tbl_dt;
+
+select max(split(split(original_timestamp_enrich,'T')[2],':')[1]) from devdata.fin_log where tbl_dt 20230410 ;
+
+---
+=================Extraction All feeds ====================
+
+ata/sdp_dmp_ma_keys2/Month202106/20210603
+ata/subadc/Month202106/20210603
+ata/subair_cdr/Month202106/20210603
+ata/subccn_cdr_content/Month202106/20210603
+ata/subccn_cdr_content_detail/Month202106/20210603
+ata/subccn_cdr_gprs/Month202106/20210603
+ata/subccn_cdr_gprs_detail/Month202106/20210603
+ata/subccn_cdr_sms/Month202106/20210603
+ata/subccn_cdr_sms_b/Month202106/20210603
+ata/subccn_cdr_sms_detail/Month202106/20210603
+ata/subccn_cdr_voice/Month202106/20210603
+ata/subccn_cdr_voice_b/Month202106/20210603
+ata/subccn_cdr_voice_detail/Month202106/20210603
+ata/subecw_eod_user_account/Month202106/20210603
+ata/suber_trans/Month202106/20210603
+ata/suber_trans_b/Month202106/20210603
+ata/subewp_fin_log_d/Month202106/20210603
+ata/subfin_log/Month202106/20210603
+ata/subfin_log_cmd_exec/Month202106/20210603
+ata/subfin_log_to_fri/Month202106/20210603
+ata/subggsn_cdr/Month202106/20210603
+ata/subgsm_service_mast/Month202106/20210603
+ata/submsc_cdr/Month202106/20210603
+ata/subpm_rated_cdrs/Month202106/20210603
+ata/subpm_rated_cdrs_b/Month202106/20210603
+ata/subprevdayssdpkeys/Month202106/20210603
+ata/subretaindata_customersubject/Month202106/20210603
+ata/subsdp_bundle_summary/Month202106/20210603
+ata/subsdp_dump_da/Month202106/20210603
+ata/subsdp_dump_subscriber/Month202106/20210603
+===========================================================================================================================================
+Calculation
+
+**All these must be Done and up to date with VR is betterr (AIR_CDR , FIN_LOG with insert  , SDP_CDR , PM_RATED , ALL DUMPS , vw_fsdmsdoc ) Match 
+SDP_BUNDDLE_SUMMARY, Extracion for CCN_CDR Feeds and other feeds updated 
+
+BSL must to be ran with the log   
+
+check kafka 
+
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper  "ugmpdaasmnode-01.mtn.co.ug:2181,ugmpdaasmnode-02.mtn.co.ug:2181,ugmpdaasdnode-01.mtn.co.ug:2181"  --list --topic  flare_bsl_kafka_in2_8
+
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper  "ugmpdaasmnode-01.mtn.co.ug:2181,ugmpdaasmnode-02.mtn.co.ug:2181,ugmpdaasdnode-01.mtn.co.ug:2181"  --list --topic  
+
+
+==========================================
+
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper  "ugmpdaasmnode-01.mtn.co.ug:2181,ugmpdaasmnode-02.mtn.co.ug:2181,ugmpdaasdnode-01.mtn.co.ug:2181"  --drop --topic  flare_bsl_kafka_in2_7
+
+
+bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/dailyrun.sh 20230410 2>&1 > /tmp/cronjoblogs/dailyrun.log; echo "Exit code: $?" >> /tmp/cronjoblogs/dailyrun.log
+
+ select count(*) from ramdev.customersubject where tbl_dt 20230410 ; 
+
+"subpm_rated_cdrs"
+"subpm_rated_cdrs_b"
+
+
+
+2>&1 > /mnt/beegfs_bsl2/tamimi/HDFS_scan_1.txt; echo "Exit code: $?" >> /mnt/beegfs_bsl2/tamimi/HDFS_scan_1.txt
+
+rm -rf /mnt/beegfs_bsl2/Flare_bsl/logs/KamanjaManager/*
+rm -rf /mnt/beegfs_bsl2/Flare_bsl/logs/Dsl/*
+
+spark-submit --verbose --conf "spark.ui.enabled=true" --master yarn --driver-memory 6G --executor-memory 25G --conf spark.yarn.executor.memoryOverhead=4048 --num-executors 30 --conf spark.executor.memoryOverhead=4000 --executor-cores 4 --class com.kamanja.ingest.Hive2HDFS /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/ExtractData_2.11-1.0.2.jar -d 20230410  -f subpm_rated_cdrs_b -t "hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData" -c /mnt/beegfs_bsl2/Flare_bsl/DataExtraction//application_cs18.conf_conf -l WARN -b 200 -mwd /mnt/beegfs_bsl2/Flare_bsl/BslScript/email -mhn extract_mailheader  -msn sendEmail.sh -msa ugmpdaasdnode1 2>&1 | tee  /mnt/beegfs_bsl2/Flare_bsl/logs/DataExtraction/Extract_Run_$(date +%Y%m%d_%s).txt
+
+spark-submit --verbose --conf "spark.ui.enabled=true" --master yarn --driver-memory 6G --executor-memory 25G --conf spark.yarn.executor.memoryOverhead=4048 --num-executors 30 --conf spark.executor.memoryOverhead=4000 --executor-cores 4 --class com.kamanja.ingest.Hive2HDFS /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/ExtractData_2.11-1.0.2.jar -d 20230410  -f subretaindata_customersubject -t "hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData" -c /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/application_cs18.conf -l WARN -b 200 -mwd /mnt/beegfs_bsl2/Flare_bsl/BslScript/email -mhn extract_mailheader  -msn sendEmail.sh -msa ugmpdaasdnode1 2>&1 | tee  /mnt/beegfs_bsl2/Flare_bsl/logs/DataExtraction/Extract_Run_$(date +%Y%m%d_%s).txt
+
+
+
+ bash /mnt/beegfs_bsl2/Flare_bsl/BslScript/BslScript.scala --dataDates 20220113 --startingPoint 1 --endPoint 17 --isIntradayProcessing true --aggr daily --processingPartitions 101-200 --skipSteps 1,2,5,6,12 2>&1 | tee  /mnt/beegfs_bsl2/Flare_bsl/logs/BslScript/BslRun_$(date +%Y%m%d_%s).txt
+
+===========================================================================================================================================
+ 
+cfw.usage_rated :  updated 
+cfw.revenue_usage_based : updated 
+cfw.usage_recharge : updated 
+cfw.revenue_rental : updated 
+devdata.audit updated
+VW_FSDMSDOC feed updated
+
+
+===========================================================================================================================================
+ Once it's Done must run the Generate KPI new on node 201
+
+RUN KPI 
+
+For the current Day : this is the new 
+
+bash /mnt/beegfs_bsl2/Tools/Rebhi/Generate_KPI_This_Day.sh
+
+bash /mnt/beegfs_bsl2/Tools/PY/KPITool/scripts/Generate_KPI_Rerun_Day.sh 20230410 
+------
+For Day-1 :
+
+bash /mnt/beegfs_bsl2/Tools/PY/KPITool/scripts/Generate_KPI_Day_1.sh
+
+------
+For Old Day :
+
+bash /mnt/beegfs_bsl2/Tools/PY/KPITool/scripts/Generate_KPI_Rerun_Day.sh 20201020
+bash /mnt/beegfs_bsl2/Tools/PY/KPITool/scripts/Generate_KPI_Rerun_Day.sh 20210
+
+bash /mnt/beegfs_bsl2/Tools/PY/KPITool/scripts/Generate_KPI_Rerun_Day.sh 20230410 
+
+===========================================================================================================================================
+N
+RunAll
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/runall.sh 20230410  20230410 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410 20230410 cfw_usage_recharge
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20221027  20221027  cfw_USAGE_AIRTIME_DEBIT_MOVEMENTS
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20221114 20221114  aggr_subsriber_SDP
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_usage_recharge
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_revenue_rental
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220123  20220126  cfw_usage_rated
+
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220821 20220821 kpi_daily_unearned_revenue_report
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220723 20220723  kpi_daily_accountwise_revenue_report
+
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_device_data_settings
+
+To SMS check
+
+REC:"4720"/"3921" >>> cfws and feeds
+REV:"4855"/"4686" >>> cfws and feeds 
+GAD:""/"16571" >>> runall 
+NAD:/"5871" >>> runall 
+DAT1:/"2047" >>> runall 
+DAT30:/"4332" >>> runall 
+MM30: >>> BSL 
+RGS1: >>> BSL 
+RGS30: >>> BSL 
+RGS90: >>> BSL 
+VAS:"8591"/"8740" 
+SMS:"51936"/"50683"
+DATA:"1061274"/"1019441"
+VOICE:"3530489"/"3412086"
+MOMOFEE:"1565269"/"2095151"
+GAD:"291"/"257"
+REC:"69034439"/"61698666"
+
+NAD : reconnection + activation - churn 
+
+
+bash /mnt/beegfs_bsl2/Tools/Send_SMS_Messages/KPI_Message_script_check_Tam.sh   on node 201 
+
+bash /mnt/beegfs_bsl2/Tools/Send_SMS_Messages/KPI_Message_script_check.sh >> check gateway 
+
+bash /mnt/beegfs_bsl2/Tools/Send_SMS_Messages/KPI_Message_script_check_oneday.sh 20230410  for onother days
+
+python /mnt/beegfs_bsl2/Tools/PY//KPITool/scripts/Generate_KPI_Data_rerun.py 303 20220802 20220802
+
+Second SMS 
+
+ECW feeds updated first sms posted on the group the KPIs are updated below CFW should be updated 
+
+cfw.revenue_momo
+cfw.evd
+cfw.USAGE_AIRTIME_DEBIT_MOVEMENTS
+cfw.airtime_credit_movements
+cfw.usage_unrated_data
+cfw.usage_unrated_voice_sms
+cfw.usage_digital_content
+cfw.account_balance
+cfw.customer_account_balance
+cfw.cust_momo_accounts_EOD
+devdata.ecw_eod_user_account
+devdata.ecw_eod_transactions
+feeds.ecw_eod_user_account
+kpi.daily_usage_report
+kpi.daily_accountwise_revenue_report
+BSL.Rgs_Base
+
+updated
+===========================================================================================================================================
+D -1 CFWs
+
+AT 4:35 AM node 202 /tmp/cronjoblogs/run_cfw_cron.log
+
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_revenue_momo
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_evd
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_USAGE_AIRTIME_DEBIT_MOVEMENTS
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_airtime_credit_movements
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_usage_unrated_data
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_usage_unrated_voice_sms
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_usage_digital_content
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_account_balance
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_customer_account_balance
+bash $commonpath/bin/run_presto.sh 20230410  20230410  cfw_cust_momo_accounts_EOD
+
+/mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_cfw_cron.sh
+
+updated
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20220723 20220723 cfw_USAGE_AIRTIME_DEBIT_MOVEMENTS
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_USAGE_AIRTIME_DEBIT_MOVEMENTS
+
+===========================================================================================================================================
+
+on node 203 at 4:40  ECW dump   
+ this feed we check it at 5:00 AM 5:01 must have data for today  (D)   account_balance on node 
+
+path 
+/mnt/beegfs_bsl2/production/archived/endofdayreport-transaction
+/mnt/beegfs_bsl2/production/archived/endofdayreport-balance
+
+jar xvf <file>
+
+40 4 * * * bash /mnt/beegfs_bsl2/Tools/MoveToIncoming/Move_ECW_Account_Balance.sh >>>> ecw_eod_user_account
+40 4 * * * bash /mnt/beegfs_bsl2/Tools/MoveToIncoming/Move_ECW_EOD_To_Incoming.sh >>>> ecw_eod_transactions
+
+
+select  tbl_dt ,count(*) from devdata.VW_FSDMSDOC where tbl_dt > 20210328 group by tbl_dt order by tbl_dt;
+
+select tbl_dt, count(*) from devdata.ecw_eod_user_account where tbl_dt >= 20230410  group by tbl_dt order by tbl_dt; the data for current day 
+
+select  tbl_dt ,count(*) from devdata.ecw_eod_transactions where tbl_dt >= 20230410  group by tbl_dt order by tbl_dt; the data for current day -1
+
+
+msck repair table devdata.ECW_EOD_USER_ACCOUNT;
+msck repair table FEEDS.ECW_EOD_USER_ACCOUNT;
+msck repair table devdata.ECW_EOD_TRANSACTIONS;
+
+===========================================================================================================================================
+
+ATo 4:35 AM CRONTAB on node 202 tail -f /tmp/cronjoblogs/run_cfw_cron.log 
+after the BSL and all CFW updated must run RunALL and generate KPI 
+
+===========================================================================================================================================
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220626 20220626 kpi_daily_accountwise_revenue_report 
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20210811 20210811 bsl.daily_accountwise_revenue_report 
+
+#We run those refresh jobs after this job finish ( tail -f /tmp/cronjoblogs/run_cfw_cron.log on node 202 ) and after the BSL
+
+#after finish we need to run these CFW or we can run this job on node 203 
+
+ bash  /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_dashbordkpi_bsl_cron.sh #after it should run runall 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_revenue_rental
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  kpi_daily_accountwise_revenue_report 
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  kpi_daily_usage_report 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile//bin/run_presto.sh 20221208  20221208  bsl_daily_unearned_revenue_report
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220301 20220331 kpi_daily_unearned_revenue_report
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410   BSL.DATA_USER_USAGE
+
+BSL.RGS_BASE
+kpi_daily_usage_report 
+kpi_daily_accountwise_revenue_report
+===========================================================================================================================================
+we should check the below queries they should be updated and trendy 
+
+select date_key,  count (*) from cfw_usage_momo_account_balance_base where date_key between 20230929   and 20231007   group by date_key order by date_key;  #check before sms
+select date_key,  count (*) from cfw.revenue_usage_based where date_key between 20230410   and 20230410   group by date_key order by date_key; #check before sms 
+select date_key,  count (*) from cfw.usage_recharge where date_key between 20230410   and 20230410   group by date_key order by date_key;  #check before sms
+select date_key,  count (*) from cfw.revenue_rental where date_key between 20230410   and 20230410   group by date_key order by date_key; #check before sms
+select date_key,  count (*) from BSL.Rgs_Base where date_key between 20231210   and 20231216   group by date_key order by date_key;
+select  tbl_dt ,count(*) from devdata.ecw_eod_user_account where tbl_dt 20230410  group by tbl_dt order by tbl_dt;
+select  tbl_dt ,count(*) from devdata.audit where tbl_dt 20230410  group by tbl_dt order by tbl_dt;
+select date_key,  count (*) from cfw.customer_account_balance where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from kpi.daily_usage_report where date_key between 20230410   and 20230410   group by date_key order by date_key;  
+select date_key,  count (*) from cfw.revenue_momo_revenue where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from bsl.data_unrated_user_usage where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from kpi.daily_accountwise_revenue_report where date_key between 20230410   and 20230410   group by date_key order by date_key;                   
+select date_key,  count (*) from cfw.revenue_interconnect where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.usage_data_content where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.usage_unrated_data where date_key between 20230410   and 20230410   group by date_key order by date_key;
+
+should be all these queries up to  date 
+we run RUN-ALL Job and then generate KPI 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/runall.sh 20230410  20230410  #to refresh all tables
+bash /mnt/beegfs_bsl2/Tools/PY/KPITool/scripts/Generate_KPI_Day_1.sh
+===========================================================================================================================================
+
+Cfw.network_reference on node 201 ATo 4:00 AM  
+
+#this for multilpe feeds finish around 5:30  - 6:00 - 6:30 AM
+
+bash /mnt/beegfs_bsl2/Tools/MoveToIncoming/Extract_DatabaseTables.sh 2>&1 >/tmp/cronjoblogs/Extract_DatabaseTables.log; echo "Exit code: $?" >> /tmp/cronjoblogs/Extract_DatabaseTables.log
+
+
+bash /mnt/beegfs_bsl2/Tools/Extract/tlkpCallAction/extract_tlkpCallAction.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/tlkpCallActionReason/extract_tlkpCallActionReason.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/tlkpCallCategory/extract_tlkpCallCategory.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/tlkpCallType/extract_tlkpCallType.sh
+
+BIB_Config_gsm
+BIB_Config_UMTS
+BIB_Config_LTE
+
+msck repair table DEVDATA.TLKPCALLACTION ;
+msck repair table DEVDATA.TLKPCALLACTIONREASON  ;
+msck repair table DEVDATA.TLKPCALLCATEGORY ;
+msck repair table DEVDATA.TLKPCALLTYPE ;
+
+
+# they updated around 5:30  - 6:00 - 6:30 AM
+
+bash /mnt/beegfs_bsl2/Tools/Extract/BIB_CONFIG_GSM/extract_BIB_CONFIG_GSM.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/BIB_CONFIG_LTE/extract_BIB_CONFIG_LTE.sh      
+bash /mnt/beegfs_bsl2/Tools/Extract/BIB_CONFIG_UMTS/extract_BIB_CONFIG_UMTS.sh
+
+select  tbl_dt ,count(*) from devdata.BIB_Config_gsm where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;  
+select  tbl_dt ,count(*) from devdata.BIB_Config_UMTS where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.BIB_Config_LTE where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20231016 20231016 dim_cgi # after the extract_BIB Finished and updated 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20220210 bsl_rgs_base
+
+select  tbl_dt ,count(*) from KPI_stg.dim_cgi_historical where tbl_dt>= 20230410  group by tbl_dt order by tbl_dt;
+
+select network_type, count(distinct cgi_key) from cfw.network_reference group by network_type;
+
+1- first check
+
+select  count(*),network_type from kpi.dim_cgi where tbl_dt = 20230410  group by network_type ;
+
+2-check 
+select network_type, count(distinct cgi_key) from KPI_stg.dim_cgi_historical where tbl_dt 20230410  group by network_type ; 
+
+should match with 
+
+select network_type, count(distinct cgi_key) from cfw.network_reference group by network_type;
+
+===========================================================================================================================================
+this job  bash /mnt/beegfs_bsl2/API/production/apiextraction/scripts/FCT_MSISDN_UNIFIED_MLD_SNAPL_ExtConv.sh  runs on node 202 AT 8:00 AM
+
+devdata.daily_mobile_lending_dump --- main Daily table   MFS 
+
+select  tbl_dt ,count(*) from devdata.daily_mobile_lending_dump where tbl_dt> 20201205 group by tbl_dt order by tbl_dt; #when it's updated check the below query 
+
+Refresh script : bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220806 20220807 momo_mfs_20190430 # already inside the job don't run it manaully 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20220906 20220907 momo_mfs_20190430
+
+Trend check :-
+
+select tbl_dt,count(*) cnt, count(distinct kyc_msisdn) msisdn_distinct, sum(DEPOSIT_QTY) DEPOSIT_QTY,sum(DEPOSIT_AMT) DEPOSIT_AMT
+,sum(mom_withdrawal_qty) mom_withdrawal_qty	,sum(mom_withdrawal_amt) mom_withdrawal_amt ,
+sum(mom_bill_payment_qty) mom_bill_payment_qty, sum(mom_bill_payment_amt)	mom_bill_payment_amt,
+sum(mom_send_qty) mom_send_qty,	sum(mom_send_amt) mom_send_amt, sum (mom_received_qty)
+mom_received_qty, sum (mom_received_amt) mom_received_amt, sum (mom_bank_transfer_qty) mom_bank_transfer_qty,
+sum (mom_bank_transfer_amt) mom_bank_transfer_amt, sum (gsm_nau_amt)
+gsm_nau_amt	,sum(gsm_dab_qty) gsm_dab_qty	, sum (gsm_la_days_qty) gsm_la_days_qty	,
+sum (cast(gsm_active_days_qty as double)) gsm_active_days_qty	, sum (cast(gsm_nta_amt as double)) gsm_nta_amt,
+sum (gsm_out_calls_qty) gsm_out_calls_qty	, sum (gsm_uniq_out_bnum_qty) gsm_uniq_out_bnum_qty	, 
+sum (gsm_in_calls_qty) gsm_in_calls_qty, sum (GSM_ACTIVE_DAYS_QTY) GSM_ACTIVE_DAYS_QTY,
+sum (gsm_uniq_in_anum_qty) gsm_uniq_in_anum_qty, sum (gsm_dat_vol_amt) gsm_dat_vol_amt,
+sum (gsm_me2u_received_qty) gsm_me2u_received_qty, sum (gsm_me2u_received_amt)	gsm_me2u_received_amt
+ from devdata.daily_mobile_lending_dump where tbl_dt between 20201205
+ and 20230410  group by tbl_dt order by tbl_dt asc
+ ;
+                              
+MFS_API API Extraction
+
+Step 2- 
+
+fct_msisdn_unified_mld_snap 
+
+select date_key,max_completeness_date,kyc_last_name,kyc_first_name,* from devdata.fct_msisdn_unified_mld_snap
+where kyc_msisdn in (256781501881,256772712046);
+
+Refresh script :- inisde the job  
+
+
+===========================================================================================================================================
+Dashbard 
+
+select a.id,a.category,coalesce(cast(try_cast(b.amount as decimal(18,4)) as varchar),'') amount,a.bib_name from devdata.dim_kpi_names a 
+left outer join (select * from devdata.all_kpi where tbl_dt 20230410 ) b on a.daasname = b.kpi_name order by a.id;
+
+
+lines 44 , 45 , 46 47 will check this like to move the point two digits to right, example this number (0.5520) new one like ( 55.20 ) 
+
+line 107 = 108+109+110 sum this lines and paste the values on line 107  
+
+line 111 = 112+120+204 sum this in line 111 like example  ( =BM112+BM120+BM120 ) on line 111 
+
+line 167 = 168+169+170 sum this lines and paste the values on line 167 
+
+line 175 = 176+177 sum this in line 175 like example (=BM176+BM177)
+ACCOUNT_BALANCE
+===========================================================================================================================================
+SMS refresh if something wrong
+cfw_usage_momo_account_balance
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_usage_momo_account_balance
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_usage_rated
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_revenue_usage_based
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_revenue_rental
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  CFW_ACCOUNT_BALANCE
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_customer_evds_accounts_history   
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_device_models
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  fact_subscriber_cgi
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  aggr_recharge_snd
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  aggr_subsriber_bsl     #this for NAD 
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410 20230410 aggr_subsriber_mk90
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  aggr_subsriber_SDP    # this for momo (for ECW Feeds)
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  aggr_subsriber_other  # this for 2g 3g lama todrob 
+ExtractAbilityTables sms 
+
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  aggr_subsriber_snd
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  FACT_MRK_SHR_COMP_DAILY
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  fact_onnet
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20220227 20220227 aggr_subsriber_mk90_new   #this for Rgs 90 
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  runSND
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/new_run_presto.sh 20230410  20230410  cfw_usage_momo_account_balance 
+
+to fix Voice Effective Rate and Voice Onnet local ER 
+
+#refresh those run usage based and kpi accountwise then 
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_revenue_usage_based
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220827  20220827 kpi_daily_accountwise_revenue_report
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_msisdn_usage
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_customer_account_balance
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_dim_daily_rates_air_sdp_cdr
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_revenue_momo 
+
+
+DATA1,DATA30
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_usage_unrated_data_voice_sms
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20210605 20210605 BSL.DATA_UNRATED_USER_USAGE
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20190101 20190131 cfw_revenue_invoice_payment
+
+Generate KPI 
+
+++++++++
+
+ /usr/bin/env python2 /mnt/beegfs_bsl2/Tools/PY/Generate_Cfw_Data/script/Generate_Cfw_Data.py
+
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_usage_unrated_data
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  BSL.DATA_UNRATED_USER_USAGE
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20211011 20211011 THIRD_PARTY_MOMO_REPORT_API
+
+'hdfs://daasug/user/daasuser/FlareData/KPI/aggr_subscriber/source=GUSER/tbl_dt=20210607' to trash at: hdfs://daasug/user/daasuser/.Trash/Current/user/daasuser/FlareData/KPI/aggr_subscriber/source=GUSER/tbl_dt=202106071623125278026
+
+incoming 
+
+
+
+ability feeds jobs
+bash /mnt/beegfs_bsl2/Tools/Extract/GSM_SERVICE_MAST/extract_GSM_SERVICE_MAST.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/CB_SERV_ADDNL_ATTRIBUTES/extract_CB_SERV_ADDNL_ATTRIBUTES.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/WMX_SERVICE_MAST/extract_WMX_SERVICE_MAST.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/CB_OFFERS/extract_CB_OFFERS.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/CB_SUBS_OFFER_DETAILS/extract_CB_SUBS_OFFER_DETAILS.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/FXL_SERVICE_MAST/extract_FXL_SERVICE_MAST.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/FXL_RATED_CDRS/extract_FXL_RATED_CDRS.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/FXL_CALL_TYPES/extract_FXL_CALL_TYPES.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/FXL_TARIFFS/extract_FXL_TARIFFS.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/CB_INVOICE_DETAILS/extract_CB_INVOICE_DETAILS.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/CB_INVOICE/extract_CB_INVOICE.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/SOFT_SUPS_LOOKUP_NEW/extract_SOFT_SUPS_LOOKUP_NEW.sh $date
+bash /mnt/beegfs_bsl2/Tools/Extract/GSM_SIMS_bsl2/extract_GSM_SIMS_bsl2.sh $date
+
+repair all 
+
+msck repair table DEVDATA.ISL_MPOS_TRX;
+msck repair table DEVDATA.CALLDETAIL;
+msck repair table DEVDATA.INTERACTIONAGENTDETAIL;
+msck repair table DEVDATA.INTERACTIONDETAIL;
+msck repair table DEVDATA.IVRCALLDETAIL;
+msck repair table DEVDATA.PM_PARTNER_IDENTIFIER;
+msck repair table DEVDATA.WMX_SERVICE_MAST;
+msck repair table DEVDATA.CB_OFFERS ;
+msck repair table DEVDATA.CB_SUBS_OFFER_DETAILS;
+msck repair table DEVDATA.FXL_SERVICE_MAST;
+msck repair table DEVDATA.FXL_CALL_TYPES;
+msck repair table DEVDATA.FXL_TARIFFS;
+msck repair table DEVDATA.FXL_RATED_CDRS;
+msck repair table DEVDATA.CB_INVOICE_DETAILS;
+msck repair table DEVDATA.CB_INVOICE;
+msck repair table DEVDATA.GSM_SIMS_MAST;
+msck repair table DEVDATA.cb_account_service_list;
+msck repair table DEVDATA.LOYALTY_EARN;
+msck repair table DEVDATA.LOYALTY_BALANCE;
+msck repair table DEVDATA.LOYALTY_BURN;
+msck repair table DEVDATA.LOYALTY_PROGRAM_MEMBER;
+msck repair table DEVDATA.ACCOUNT_HOLDER_DUMP;
+msck repair table DEVDATA.HLR;
+msck repair table DEVDATA.AUC;
+msck repair table DEVDATA.ADC;
+msck repair table DEVDATA.DATA_SETTINGS;
+msck repair devdata.bib_config_lte;
+msck repair devdata.bib_config_;
+msck repair devdata.bib_config_gsm;
+
+
+
+Extraction re-run 
+
+
+spark-submit --verbose --conf "spark.ui.enabled=true" --master yarn --driver-memory 64G --executor-memory 25G --conf spark.yarn.executor.memoryOverhead=4048 --num-executors 30 --conf spark.executor.memoryOverhead=4000 --executor-cores 4 --class com.ligadata.extract.Hive2HDFS /mnt/beegfs_bsl2/Jars/ExtractData_2.11-3.1.00.2589.jar -d 20230410  -f subfin_log_cmd_exec,subprevdayssdpkeys,subadc,submsc_cdr,subsdp_dump_subscriber,subair_cdr,subfin_log,subpm_rated_cdrs,subpm_rated_cdrs_b,subewp_fin_log_d,suber_trans,subecw_eod_user_account,subgsm_service_mast,subfin_log_to_fri,subsdp_dump_da,subsdp_bundle_summary -t "hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData" -c /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/application_cs18.conf -l WARN -b 200 -mwd /mnt/beegfs_bsl2/Flare_bsl/BslScript/email -mhn extract_mailheader  -msn sendEmail.sh -msa ugmpdaasdnode1 2>&1 | tee  /mnt/beegfs_bsl2/Flare_bsl/logs/DataExtraction/Extract_Run_$(date +%Y%m%d_%s).txt
+
+
+
+for subair_cdr if failed 
+
+java -Xmx20g -Xms20g -Dlog4j.configurationFile=/home/daasuser/log4j2.xml -jar /home/daasuser/FileOps_2.11-0.1-SNAPSHOT.jar -in  /user/daasuser/FlareData/Feeds/AIR_CDR_CS18/tbl_dt=20200531 -out /mnt/beegfs_bsl2/rebhi_tmp/ -od -tf 1 -nt 15 -dp 15 -of -lbl copy20200531 -hdfs "hdfs://daasug" -fromHdfs -toHdfs -rcm -cp /user/daasuser/FlareData/Feeds/AIR_CDR_CS18_test1/tbl_dt=20200531 -nosim
+
+missing date > ftpin > incoming > processed > archived 
+
+if the file exsit check the path and do vi in sample of file or try run move to incoming job (script rerun or PCF)
+
+=======================================================
+Mongo Data (Loyalty count)
+
+
+ mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval 'db.LoyaltyEarn.find({createdDate: {$gte : ISODate("2022-05-16T00:00:00Z") , $lte: ISODate("2022-05-16T23:59:59Z") }}).count()'
+
+  mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval 'db.LoyaltyBurn.find({createdDate: {$gte : ISODate("2021-12-11T00:00:00Z") , $lte: ISODate("2021-12-11T23:59:59Z") }}).count()'
+=======================================================
+All queries 
+
+--PM_RATED
+select tbl_dt,count(*) from devdata.pm_rated_cdrs where tbl_dt > 20230410  group by tbl_dt order by tbl_dt;
+
+--DUMPS
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_DA where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;    
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_UT  where tbl_dt>2=0200501 group by tbl_dt order by tbl_dt;  
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_UC  where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;   
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_ACC  where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;  
+select  tbl_dt ,count(*) from devdata.SDP_DUMP_SUBSCRIBER where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.sdp_dump_offer where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.sdp_dump_faf_account where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.sdp_dump_faf_list_subs where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;
+
+--SDP_BUNDLLE 
+select  tbl_dt ,count(*) from devdata.sdp_bundle_summary where tbl_dt>=20201128 group by tbl_dt order by tbl_dt;
+
+--FEEDS 
+select  tbl_dt ,count(*) from devdata.ccn_cdr_cs18 where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; #
+
+select tbl_dt , count(*) from devdata.cb_serv_addnl_attributes where tbl_dt>= 20230410  group by tbl_dt order by tbl_dt; #ability feeds
+
+select tbl_dt ,count(*) from devdata.GSM_SERVICE_MAST where tbl_dt between 20230410  and 20230410  group by tbl_dt order by tbl_dt; --# 2:30 must be extracted to fill data in usage_rated table 
+select tbl_dt ,count(*) from devdata.er_agent where tbl_dt between 20230410  and 20230410  group by tbl_dt order by tbl_dt;
+select  tbl_dt ,count(*) from devdata.BIB_Config_gsm where tbl_dt>20200518 group by tbl_dt order by tbl_dt;  
+select  tbl_dt ,count(*) from devdata.BIB_Config_UMTS where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from devdata.BIB_Config_LTE where tbl_dt> 20230410  group by tbl_dt order by tbl_dt; 
+select  tbl_dt ,count(*) from KPI_stg.dim_cgi_historical where tbl_dt> 20230410  group by tbl_dt order by tbl_dt;
+select network_type, count(distinct cgi_key) from cfw.network_reference group by network_type;
+select  tbl_dt ,count(*) from devdata.audit where tbl_dt 20230410  group by tbl_dt order by tbl_dt;
+--CFW 
+select date_key,  count (*) from cfw.usage_rated where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.revenue_usage_based where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.usage_recharge where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.revenue_rental where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.usage_rated where date_key between 20230410   and 20230410   group by date_key order by date_key;  #check before sms
+select date_key,  count (*) from cfw.revenue_usage_based where date_key between 20230410   and 20230410   group by date_key order by date_key; #check before sms 
+select date_key,  count (*) from cfw.usage_recharge where date_key between 20230410   and 20230410   group by date_key order by date_key;  #check before sms
+select date_key,  count (*) from cfw.revenue_rental where date_key between 20230410   and 20230410   group by date_key order by date_key; #check before sms
+select date_key,  count (*) from cfw.customer_account_balance where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.revenue_momo_revenue where date_key between 20230410   and 20230410   group by date_key order by date_key;              
+select date_key,  count (*) from cfw.revenue_interconnect where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.usage_data_content where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from cfw.usage_unrated_data where date_key between 20230410   and 20230410   group by date_key order by date_key;
+
+--others--
+select  tbl_dt ,count(*) from devdata.VW_FSDMSDOC where tbl_dt > 20230410  group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.ecw_eod_user_account where tbl_dt >= 20230410  group by tbl_dt order by tbl_dt; --the data for current day 
+select  tbl_dt ,count(*) from devdata.ecw_eod_transactions where tbl_dt >= 20230410  group by tbl_dt order by tbl_dt; --the data for current day -1
+select date_key,  count (*) from kpi.daily_usage_report where date_key between 20230410   and 20230410   group by date_key order by date_key; 
+select date_key,  count (*) from kpi.daily_accountwise_revenue_report where date_key between 20230410   and 20230410   group by date_key order by date_key; 
+select date_key,  count (*) from bsl.data_unrated_user_usage where date_key between 20230410   and 20230410   group by date_key order by date_key;
+select date_key,  count (*) from BSL.Rgs_Base where date_key between 20230410   and 20230410   group by date_key order by date_key;
+--MFS_API API
+
+select tbl_dt,count(*) cnt, count(distinct kyc_msisdn) msisdn_distinct, sum(DEPOSIT_QTY) DEPOSIT_QTY,sum(DEPOSIT_AMT) DEPOSIT_AMT
+,sum(mom_withdrawal_qty) mom_withdrawal_qty	,sum(mom_withdrawal_amt) mom_withdrawal_amt ,
+sum(mom_bill_payment_qty) mom_bill_payment_qty, sum(mom_bill_payment_amt)	mom_bill_payment_amt,
+sum(mom_send_qty) mom_send_qty,	sum(mom_send_amt) mom_send_amt, sum (mom_received_qty)
+mom_received_qty, sum (mom_received_amt) mom_received_amt, sum (mom_bank_transfer_qty) mom_bank_transfer_qty,
+sum (mom_bank_transfer_amt) mom_bank_transfer_amt, sum (gsm_nau_amt)
+gsm_nau_amt	,sum(gsm_dab_qty) gsm_dab_qty	, sum (gsm_la_days_qty) gsm_la_days_qty	,
+sum (cast(gsm_active_days_qty as double)) gsm_active_days_qty	, sum (cast(gsm_nta_amt as double)) gsm_nta_amt,
+sum (gsm_out_calls_qty) gsm_out_calls_qty	, sum (gsm_uniq_out_bnum_qty) gsm_uniq_out_bnum_qty	, 
+sum (gsm_in_calls_qty) gsm_in_calls_qty, sum (GSM_ACTIVE_DAYS_QTY) GSM_ACTIVE_DAYS_QTY,
+sum (gsm_uniq_in_anum_qty) gsm_uniq_in_anum_qty, sum (gsm_dat_vol_amt) gsm_dat_vol_amt,
+sum (gsm_me2u_received_qty) gsm_me2u_received_qty, sum (gsm_me2u_received_amt)	gsm_me2u_received_amt
+ from devdata.daily_mobile_lending_dump where tbl_dt between 20201210
+ and 20230410  group by tbl_dt order by tbl_dt asc
+ ;
+                              
+
+
+
+--Dashboard
+
+select a.id,a.category,coalesce(cast(try_cast(b.amount as decimal(18,4)) as varchar),'') amount,a.bib_name from devdata.dim_kpi_names a left outer join (select * from devdata.all_kpi where tbl_dt=20230410 ) b on upper(a.daasname) = upper(b.kpi_name) order by a.id;
+
+
+
+MAPS remove duplicate 
+
+bash /mnt/beegfs_bsl2/Tools/Rebhi/MAPS_2G_CELL_D_remove_duplication_oneday.sh <Date>
+bash /mnt/beegfs_bsl2/Tools/Rebhi/MAPS_3G_CELL_D_remove_duplication_oneday.sh 20210730
+bash /mnt/beegfs_bsl2/Tools/Rebhi/MAPS_4G_CELL_D_remove_duplication_oneday.sh <Date>
+
+
+
+------
+select tbl_dt, count(*) from devdata.gsm_service_mast where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.cb_serv_addnl_attributes where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.wmx_service_mast where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.cb_offers where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.cb_subs_offer_details where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.fxl_service_mast where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.fxl_rated_cdrs where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.fxl_call_types where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.fxl_tariffs where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.cb_invoice_details where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.cb_invoice where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.SOFT_SUPS_LOOKUP_NEW where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.gsm_sims_mast where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+
+------
+select tbl_dt, count(*) from devdata.isl_mpos_trx where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.lyt_event_data where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.lyt_subscriber_bsl2 where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.lyt_trans_points where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.agentdispodetail where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.agentloginlogout where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.agentnotreadydetail where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.calldetail where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.interactionagentdetail where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.interactiondetail where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.ivrcalldetail where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.tlkpcallaction where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.tlkpcallactionreason where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.tlkpcallcategory where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.tlkpcalltype where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.bib_config_gsm where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.bib_config_lte where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.bib_config_umts where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+
+------
+select tbl_dt, count(*) from devdata.er_trans where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.er_relocation_history where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+select tbl_dt, count(*) from devdata.er_agent where tbl_dt > 20201129 group by tbl_dt order by tbl_dt;
+
+------
+
+select date_key,count(*) from kpi.daily_accountwise_revenue_report  where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.customer_account_balance where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from bsl.data_unrated_user_usage where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.revenue_interconnect where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.revenue_usage_based where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.usage_rated where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.usage_data_content where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.revenue_rental where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.usage_recharge where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from cfw.usage_unrated_data where date_key >= 20201129 group by date_key order by date_key;
+select date_key,count(*) from kpi.aggr_subscriber where date_key >= 20201129 group by date_key order by date_key; 
+select date_key,count(*) from kpi.daily_usage_report where date_key >= 20201129 group by date_key order by date_key;
+select tbl_dt,count(*) from devdata.audit where tbl_dt >= 20201129 group by tbl_dt order by tbl_dt;
+select date_key,count(*) from cfw.usage_momo_account_balance where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.device_sim_base where date_key >= 20201129 group by date_key order by date_key;
+
+select start_dt,count(*) from cfw.network_reference where start_dt between 20220801 and 20220831 group by start_dt order by start_dt;
+
+select * from cfw.network_reference;
+
+select date_key,count(*) from cfw.usage_unrated_data where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.momo_revenue where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.revenue_momo where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.revenue_momo_revenue where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.device_imei_imsi_history where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.device_imsi_subs_id_history where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.device_models where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.device_data_settings where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.customer_base where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.customer_competitors where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.customer_in_accounts where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from cfw.customer_services where date_key >= 20201129 group by date_key order by date_key;
+
+
+select date_key,count(*) from cfw.network_qos where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from kpi.daily_unearned_revenue_report where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from bsl.data_user_usage where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from bsl.msisdn_momo_usage_and_revenue where date_key >= 20201129 group by date_key order by date_key;
+
+select date_key,count(*) from bsl.daily_msisdn_revenue_cube where date_key >= 20201129 group by date_key order by date_key; 
+
+select date_key,count(*) from bsl.daily_bundle_activation_cube where date_key >= 20201129 group by date_key order by date_key; no
+
+select date_key,count(*) from BSL.rgs_base where date_key >= 20201129 group by date_key order by date_key;
+
+
+/mnt/beegfs_bsl2/FlareDataTest/HSS/Splitted/ 
+
+
+
+
+
+CCN_CDR cleaned
+Extraction is running
+Insert FIN_LOG running
+Kindly note the status_code for feeds.fin_log didn't have COMMITTED for Date 20210516
+PM_RATED_CDR Extract hour 13 - 16 has finished Split running
+PM_RATED_CDRS Updated
+All Dumps were archived
+cfw.usage_rated running
+Move_Live_SDP_DUMPS has finished
+ALL DUMPS ARE UP TO DATE AND TRENDY
+SDP_BUNDLE_SUMMARY Updated
+calculation D -1 running
+CFW.USAGE_RATED :  UPDATED 
+CFW.REVENUE_USAGE_BASED : UPDATED 
+CFW.USAGE_RECHARGE : UPDATED 
+CFW.REVENUE_RENTAL : UPDATED 
+DEVDATA.AUDIT UPDATED
+VW_FSDMSDOC FEED UPDATED
+Calculation has finished runall running
+Generate_KPI_Day_1
+16/05(M)
+REC:"4441"/"3628"
+REV:"4589"/"4651"
+GAD:"18506"/"15040"
+NAD:"1278"/"18"
+DAT1:"2030"/"2069"
+DAT30:"4586"/"4573"
+MM30:"8390"
+RGS1:"6573"
+RGS30:"13117"
+RGS90:"20804"
+VAS:"10872"/"10734"
+SMS:"51557"/"54172"
+DATA:"966827"/"1037259"
+VOICE:"3387668"/"3379433"
+MOMOFEE:"1328552"/"2015827"
+GAD:"302"/"239"
+REC:"73458748"/"56667201"
+CFW.EVD
+CFW.USAGE_AIRTIME_DEBIT_MOVEMENTS
+CFW.AIRTIME_CREDIT_MOVEMENTS
+CFW.USAGE_UNRATED_DATA
+CFW.USAGE_UNRATED_VOICE_SMS
+CFW.USAGE_DIGITAL_CONTENT
+CFW.ACCOUNT_BALANCE
+CFW.CUSTOMER_ACCOUNT_BALANCE
+CFW.CUST_MOMO_ACCOUNTS_EOD
+KPI.DAILY_USAGE_REPORT
+KPI.DAILY_ACCOUNTWISE_REVENUE_REPORT
+BSL.RGS_BASE 
+Updated
+ECW_EOD_USER_ACCOUNR
+FEEDS.ECW_EOD_USER_ACCOUNT
+ECW_EOD_TRANSACTIONS
+UPDATED
+6:57 AM
+SMS Released
+
+
+
+===========================================================================================================================================
+
+==========================================================================================================================================
+
+===========================================================================================================================================
+
+===========================================================================================================================================
+IB3T 
+
+Business Dashboard Team.
+
+MTN dashboard
+
+outlook
+
+Feras.Khalil@mtn.com
+
+Connections@1994
+
+From : BusinessPerformance.UG@mtn.com ||||| Imprtoant to change 
+To: 
+
+BusinessPerformance.UG@mtn.com
+
+Business Performance Dashboard
+
+
+Dear all,
+
+ 
+
+Please find attached, the Business Performance Dashboard as of 7th  January, 2022.
+
+ 
+
+Regards,
+
+Business Dashboard Team.
+
+
+https://outlook.office365.com/mail/sentitems/id/AAQkADhmMTZmMzI3LTA1MTMtNDhjOC05MzVjLTE1MWI4MDM0ZTYzYwAQABZ2IGMQpEVFrfaHPakF9rI%3D?state=0
+
+
+------Dashboard Queries---------
+select count(*) as count, hour_enrich from devdata.ccn_cdr_cs18 where tbl_dt = 20230410   and  UPPER(sourcefilename) like '%OCC%' and cast(hour_enrich as integer) between 00 and 23 group by hour_enrich order by hour_enrich ;
+
+-------------------------- CEO DashBoard Release ------------------
+sudo chmod 777 /mnt/beegfs_bsl2/MTNUG_-LigaData_-DaaS-Business-Dashboard-20230410 .xlsx
+
+* Internaly *
+f
+echo -e "Dear All,\n\n\n  21.\n\n\nThanks for choosing DaaS.\n\nThanks & Regards,\nLigaData Team" | mailx -r "DAAS_NOTE_GH@mtn.com" -s "m.tamimi@ligadata.com"
+
+
+echo -e "test  " | mailx -r "EVA_Note_UG@mtn.com" -s "test  "  "ugandaservicemanagment@ligadata.com"
+--------------------------------------
+* MTN * 
+echo -e "GH_KAMANJA_LOAD" | mailx -r "DAAS_NOTE_GH@mtn.com" -s "MTN GH "  -a /mnt/beegfs_ghana/tamimi/Kamanja_load "m.tamimi@ligadata.com"
+
+echo -e "Missing Sequence for $1" | mailx -r "DAAS_NOTE_UG@mtn.com" -s "Missing Sequence for $1"  -a  /mnt/beegfs_bsl2/Email_Jobs/Missing_Sequence.csv "m.tamimi@ligadata.com"
+----------------------------------------------------------------------------------------------------------------------------------
+
+CEO Dashboard Released at 9:50 AM UG TIME
+Business Dashboard Released at 9:49 AM UG TIME
+
+
+* Query *
+-- Old Dashboad
+
+select a.id,a.category,coalesce(cast(try_cast(b.amount as decimal(18,4)) as varchar),'') amount,a.bib_name from devdata.dim_kpi_names a 
+left outer join (select * from devdata.all_kpi where tbl_dt=20210630) b on a.daasname = b.kpi_name order by a.id;
+
+
+
+method (2) formula
+
+
+
+
+
+
+
+
+
+===========================================================================================================================================
+===========================================================================================================================================
+===========================================================================================================================================
+===========================================================================================================================================
+===========================================================================================================================================
+
+
+
+migration 
+
+bash /mnt/beegfs_bsl2/Tools/MigrationTest/scripts/runMigration.sh --KamanjaNodeIp 10.156.42.146 --ControllerNodeIp 10.156.42.173 --KamanjaHome /opt/flare_stg/FlareMigrationTool --Operation stop --MigrationToolPath /mnt/beegfs_bsl2/Tools/MigrationTest --NodesId 1,3,4,5,6
+
+
+
+
+
+
+
+
+
+===========================================================================================================================================
+======================================================================================================================================================================================================================================================================================
+
+Flare_UG
+
+
+ls /mnt/beegfs_bsl2/production/ftpin/MSC |wc -l
+
+
+/source/production/ftpin/CCN_CS18/
+/source/production/ftpin/CCN/
+/source/production/ftpin/SDP_CS18/SDP_CDR/
+/source/production/ftpin/AIR_CS18/
+/source/production/ftpin/PCRF/
+/source//production/ftpin/DND/
+/source/production/ftpin/GGSN/
+/source/production/ftpin/MSC/
+
+
+old 
+dir=/opt/flare_dev/lib/system/ 
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/flarecontrolmanager_2.11.jar 
+conf=/mnt/beegs_bsl2/Flare_dev/config
+
+dir=/opt/flare_dev/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/flarecontrolmanager_2.11.jar
+conf=/mnt/share_point/Flare_dev/config
+
+conf=/mnt/share_point/Flare_dev/config
+
+
+
+
+dir=/opt/flare_dev/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/beegfs_bsl2/Flare_dev/config
+
+
+Test cluster
+
+ssh 10.156.42.168
+
+KAMANJA_HOME=/opt/flare_stg/flare_test
+conf=/mnt/beegfs_bsl2/flare_test/Run/Load
+dir=${KAMANJA_HOME}/lib/system
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+
+java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c status
+
+OR below it's the same script
+
+echo -ne '\n' |  java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c start
+
+/mnt/beegfs_bsl2/Flare_bsl/logs/KamanjaManager/
+
+java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c status
+
+normal kamanja 
+
+dir=/opt/flare_dev/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/beegfs_bsl2/Flare_dev/config
+
+
+dir=/opt/flare_dev/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/share_point/Flare_dev/config
+
+Status 
+1- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s grid -c status 
+2- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s kamanja -c status 
+3- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s validator -c status 
+4- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s fdi -c status 
+echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c status
+Start 
+1- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s grid -c start 
+2- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s kamanja -c start 
+3- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s validator -c start 
+4- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s fdi -c start
+Stop 
+1- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s grid -c stop 
+2- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s validator -c stop 
+3- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s kamanja -c stop 
+4- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s fdi -c stop 
+force_stop 
+1- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s fdi -c force_stop 
+2- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s validator -c force_stop 
+3- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s kamanja -c force_stop 
+4- echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s grid -c force_stop
+
+
+
+echo -e "Test_1 job at $(date +%Y%m%d%H%M%S) \n" | mailx -r "DAAS_Note_UG@mtn.com" -s "DAAS_Note_UG_<Start_Validation_Tool_2>" "m.tamimi@ligadata.com "
+
+ echo "This is the body of the email" | mail -s "This is the subject line" m.tamimi@ligadata.com
+
+
+ echo -e "test" | mailx -r "DAAS_ALERTS_UG@mtn.com" -s " test "  "m.tamimi@ligadata.com"
+
+
+ check status if all nodes are down 
+
+first thing stop if not all node are down do force stop grid ,
+make sure are node are down to move to next step 
+there is a log for each process make sure are all logs are running (grid,kamanja,validator,fdi) are writing 
+
+/mnt/beegfs_bsl2/Flare_dev/Grid/logs/FlareGridServer
+
+/mnt/share_point/Flare_dev/Grid/logs/FlareGridServer
+
+/mnt/beegfs_bsl2/Flare_dev/logs/KamanjaManager 
+
+/mnt/beegfs_bsl2/Flare_dev/Validator_logs/Validator
+
+/mnt/share_point/Flare_dev/logs/Fdi
+
+
+dir=/opt/flare_dev/lib/system/cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/beegfs_bsl2/Flare_dev/config
+
+/mnt/share_point/Flare_dev/logs/Fdi
+
+/mnt/beegfs_bsl2/Flare_dev/logs/Fdi
+look for writing
+
+============================kamanja stuff =======================================
+
+deleteall 'flare_bsl:config_objects','nodeinfo.4'
+
+1- stop kamanja 
+2- open base shell
+3- run the command for delete the node from hbase like this 
+
+Exp : 
+
+node ID                      command 
+
+10.156.42.131         deleteall 'flare_dev:config_objects','nodeinfo.4'
+10.156.42.132         deleteall 'flare_dev:config_objects','nodeinfo.5'
+
+10.156.42.133        deleteall 'flare_dev:config_objects','nodeinfo.6'
+
+10.156.42.134        deleteall 'flare_dev:config_objects','nodeinfo.10' 
+
+10.156.42.135        deleteall 'flare_dev:config_objects','nodeinfo.7'
+
+
+addall 'flare_dev:config_objects','nodeinfo.2'
+
+10.156.42.136  this nod not in kamanja 
+
+10.156.42.137   this node not in kamanaja 
+
+4 - start kamanja 
+5 - go to which node you need to remove it and make 
+- ps aux | grep -i grid                                         and kill all on the node you need to do the change 
+- ps aux | grep -i validator                                   and kill all on the node you need to do the change
+
+/opt/flare_dev/config/ClusterConfig.json >>>> config 
+
+
+======MongoDB=====
+
+mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval 'db.LoyaltyEarn.find({createdDate: {$gte : ISODate("2021-06-05T00:00:00Z") , $lte: ISODate("2021-06-05T23:59:59Z") }}).count()'
+
+
+mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval 'db.LoyaltyBurn.find({createdDate: {$gte : ISODate("2021-05-25T00:00:00Z") , $lte: ISODate("2021-05-25T23:59:59Z") }}).count()'
+
+mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval 'db.LoyaltyLOYALTY_PROGRAM_MEMBER.find({createdDate: {$gte : ISODate("2021-05-25T00:00:00Z") , $lte: ISODate("2021-05-25T23:59:59Z") }}).count()'
+
+
+mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval 'db.Balance.find({createdDate: {$gte : ISODate("2021-05-25T00:00:00Z") , $lte: ISODate("2021-05-25T23:59:59Z") }}).count()'
+
+
+
+
+spark-submit --verbose --conf "spark.ui.enabled=true" --master yarn --driver-memory 64G --executor-memory 40G --conf spark.yarn.executor.memoryOverhead=4048 --num-executors 30 --conf spark.executor.memoryOverhead=4000 --executor-cores 4 --class com.kamanja.ingest.Hive2HDFS /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/ExtractData_2.11-1.0.2.jar -d 20230410  -f subfin_log_cmd_exec,subprevdayssdpkeys,subadc,submsc_cdr,subsdp_dump_subscriber,subair_cdr,subfin_log,subpm_rated_cdrs,subpm_rated_cdrs_b,subewp_fin_log_d,suber_trans,subecw_eod_user_account,subgsm_service_mast,subfin_log_to_fri,subsdp_dump_da,subsdp_bundle_summary -t "hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData" -c /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/application_cs18.conf -l WARN -b 200 -mwd /mnt/beegfs_bsl2/Flare_bsl/BslScript/email -mhn extract_mailheader  -msn sendEmail.sh -msa ugmpdaasdnode1 2>&1 | tee  /mnt/beegfs_bsl2/Flare_bsl/logs/DataExtraction/Extract_Run_$(date +%Y%m%d_%s).txt
+
+
+
+spark-submit --verbose --conf "spark.ui.enabled=true" --master yarn --driver-memory 64G --executor-memory 40G --conf spark.yarn.executor.memoryOverhead=4048 --num-executors 30 --conf spark.executor.memoryOverhead=4000 --executor-cores 4 --class com.kamanja.ingest.Hive2HDFS /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/ExtractData_2.11-1.0.2.jar -d 20230410  -f subretaindata_customersubject -t "hdfs://daasug/ramdisk/daasuser/FlareData/ExportedBslSubData" -c /mnt/beegfs_bsl2/Flare_bsl/DataExtraction/application_cs18.conf -l WARN -b 200 -mwd /mnt/beegfs_bsl2/Flare_bsl/BslScript/email -mhn extract_mailheader  -msn sendEmail.sh -msa ugmpdaasdnode1 2>&1 | tee  /mnt/beegfs_bsl2/Flare_bsl/logs/DataExtraction/Extract_Run_$(date +%Y%m%d_%s).txt
+
+
+
+
+dim.dim_bundle_offer_updated
+dim.dim_bundle_offer_updated
+
+encryption 
+THIRD_PARTY_MOMO_REPORT_API
+
+lea API
+==================================================================
+
+edit the email to your email in below file (replace a.sady@ligadata.com by your email so you can recive the confirmation ) : 
+ vi /mnt/beegfs_apidfs/API_LEA/users/lea_ayah/aya-20210701.dat
+
+cp /mnt/beegfs_apidfs/API_LEA/users/lea_ayah/aya-20210701.dat /mnt/beegfs_apidfs/API_LEA/users/lea_ayah/requests/
+
+wait till the requests dierctory be empty then you should recive email 
+ ll /mnt/beegfs_apidfs/API_LEA/users/lea_ayah/requests/
+total 0
+
+you can also check this path to see if the excel files generate or not 
+ll -ltr /mnt/beegfs_apidfs/API_LEA/users/lea_ayah/data
+==================================================================
+
+ hadoop fs -ls hdfs://daasug/encryption_zone/daasuser/FlareData/Feeds/BIB_CONFIG_LTE
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_accountwise_revenue_report
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_msisdn_accountwise_revenue_report
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_msisdn_revenue_cube
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_msisdn_revenue_split_cube
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_msisdn_revenue_split_cube 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_msisdn_unearned_revenue_report 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_daily_unearned_revenue_report 
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  bsl_dim_daily_rates_air_sdp_cdr_cs18
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  kpi_daily_accountwise_revenue_report
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  kpi_daily_unearned_revenue_report
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20220414 20220414 kpi_daily_usage_report
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20211024 20230410  momo_mfs_20190430
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20211101 20230410  THIRD_PARTY_MOMO_REPORT_API
+
+bash /mnt/beegfs_bsl2/Tools/runPrestoFile/bin/run_presto.sh 20230410  20230410  cfw_customer_services
+
+
+
+
+
+
+bash /mnt/beegfs_bsl2/Tools/Extract/AgentDispoDetail/extract_AgentDispoDetail.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/AgentLoginLogout/extract_AgentLoginLogout.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/AgentNotReadyDetail/extract_AgentNotReadyDetail.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/CallDetail/extract_CallDetail.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/InteractionAgentDetail/extract_InteractionAgentDetail.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/InteractionDetail/extract_InteractionDetail.sh
+bash /mnt/beegfs_bsl2/Tools/Extract/IVRCallDetail/extract_IVRCallDetail.sh
+
+
+
+
+
+
+
+
+====================================================UG NEW ==============================================================
+Agent_Commission
+
+/mnt/beegfs_bsl2/Tmp/Agent_Commission/
+
+bash /mnt/beegfs_bsl2/Tools/EXPORT_MOMO_RPT_ACT_SUBS_PER_TRANS/MAIN_EXPORT_MOMO_RPT_ACT_SUBS_PER_TRANS.sh
+
+sshpass -p 'FtUxre@1231' scp /mnt/beegfs_bsl2/Tmp/Agent_Commission/20230410 /momo_rpt_act_subs_per_trans_20230410 .csv ftpuser@10.170.148.66:/home/ftpuser/sms/momo/
+
+
+
+
+New feeds 
+
+
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.ayobaevents WHERE TBL_DT>20211120 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.ADEPT WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.cloud_udn WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_WORKGROUP WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_USERS WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_SKILL_LEVELS WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_SERVICE WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D13
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_OUTBOUNDSMSDETAIL WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 >>> missing 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_ONCALLACTIVITYDETAIL WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_MANUALCALLDETAIL WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_DISPOSITION WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_AODCALLDETAIL WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_AGENTSTATUSREASON WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.UIP_ACDCALLDETAIL WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.Subscriber_Transaction_CDR WHERE TBL_DT>20210901 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+SELECT  TBL_DT ,COUNT(*) FROM DEVDATA.VASCLOUD_SMSC_CDR WHERE TBL_DT>20220410 GROUP BY TBL_DT ORDER BY TBL_DT; -- FOR  D -1 
+
+
+msck repair table  DEVDATA.ADEPT ;
+msck repair table  DEVDATA.cloud_udn ;
+msck repair table  DEVDATA.UIP_WORKGROUP;
+msck repair table  DEVDATA.UIP_USERS;
+msck repair table  DEVDATA.UIP_SKILL_LEVELS ;
+msck repair table  DEVDATA.UIP_SERVICE;
+msck repair table  DEVDATA.UIP_OUTBOUNDSMSDETAIL;
+msck repair table  DEVDATA.UIP_ONCALLACTIVITYDETAIL ;
+msck repair table  DEVDATA.UIP_MANUALCALLDETAIL;
+msck repair table  DEVDATA.UIP_DISPOSITION ;
+msck repair table  DEVDATA.UIP_AODCALLDETAIL;
+msck repair table  DEVDATA.UIP_AGENTSTATUSREASON;
+msck repair table  DEVDATA.UIP_ACDCALLDETAIL;
+msck repair table  DEVDATA.Subscriber_Transaction_CDR;
+msck repair table  DEVDATA.VASCLOUD_SMSC_CDR;

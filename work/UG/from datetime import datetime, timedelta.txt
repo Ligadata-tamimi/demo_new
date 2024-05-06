@@ -1,0 +1,48 @@
+from datetime import datetime, timedelta
+import airflow
+from airflow.models import DAG
+from airflow.operators.python_operator import PythonOperator
+from airflow.operators.bash_operator import BashOperator
+from airflow.utils import timezone
+from os import popen
+
+yesterday = datetime.today() - timedelta(days=1)
+today = datetime.today()
+dateMonth= yesterday.strftime('%Y%m')
+d_1 = yesterday.strftime('%Y%m%d')
+run_date = today.strftime('%Y%m%d')
+dayStr = today.strftime('%Y%m%d%H%M%S')
+hour_run_date = datetime.today() - timedelta(hours=2)
+hour_run = hour_run_date.strftime('%H')
+
+args = {
+   'owner':'daasuser',
+   'depends_on_past': False,
+   'start_date': airflow.utils.dates.days_ago(1),
+   'email': ['support@ligadata.com'],
+   'email_on_failure': ['support@ligadata.com'],
+   'email_on_retry': False,
+   'retries': 3,
+   'retry_delay': timedelta(minutes=3),
+   'catchup':False,
+}
+
+dag = DAG(
+    dag_id='AGILITY_GSM_SERVICE_MAST',
+    default_args=args,
+    schedule_interval='0 2 * * *',
+    catchup=False,
+    concurrency=1,
+    max_active_runs=1
+)
+
+
+
+EXTRACT_AGILITY_GSM_SERVICE_MAST  = BashOperator(
+     task_id='EXTRACT_AGILITY_GSM_SERVICE_MAST' ,
+     depends_on_past=False,
+     bash_command='  bash /mnt/beegfs/Tools/EXTRACTION_DB/AGILITY_GSM_SERVICE_MAST/extract_AGILITY_GSM_SERVICE_MAST.sh ',
+     dag=dag,
+     trigger_rule='all_done',
+     run_as_user ='daasuser'
+)
