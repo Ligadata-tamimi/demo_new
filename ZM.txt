@@ -1,0 +1,73 @@
+please check your OS account on Zambia
+link to reset the password
+
+https://selfservice.mtn.zm
+
+=======VPN+Shell========
+Tamimia
+TamKermet@@432100
+
+New VPN APPGATE
+
+appgate://sslvpn-ctl1.mtnzambia.co.zm/eyJwcm9maWxlTmFtZSI6Ik1UTiBaYW1iaWFfQUQiLCJzcGEiOnsibW9kZSI6IlRDUCIsIm5hbWUiOiJNVE5fWmFtYmlhX0FEIiwia2V5IjoiMjBkMWM5Mjg2ZDk3OTU4YzY4NzZmYzYzODEzMWMyNzc3NDQzMDQwM2FmOGZiZmM0YmM0YzY1NDhiMjY4YzVmOCJ9LCJjYUZpbmdlcnByaW50IjoiYzU3ZjFjNTcxNTc3ZTU5OGViZTU3YTU3OTVkMjNlODhjYmVhYzdjOTc4N2Q1M2M5MmExY2U4MTZhYmJjNGMyMyIsImlkZW50aXR5UHJvdmlkZXJOYW1lIjoiTVROIFphbWJpYV9BRCJ9
+
+================Shell_TMP==================
+10.111.12.12
+
+erekate
+Zambiapass@19951
+
+then 
+sudo su - daasuser
+
+you will be on this node
+10.111.12.12
+
+=============================================
+presto connection
+/opt/presto/bin/presto --server 10.111.12.21:8099 --catalog hive --schema feeds --user daasuser
+
+===============dedup=========================
+bash /mnt/beegfs/Tools/Dedup/bin/DedupIncr.sh -f EWP_FIN_LOG -p presto -d 20240322 -n 4 -r 2>&1 | tee /mnt/beegfs/Tools/Dedup/summarylogs/DedupRun_$(date +%Y%m%d%H%M%S).txt
+
+================missing seq================
+select cast (tbl_dt as varchar) as dt , count (*) as files , sum(lines) as rows from audit.files_filesopps_summary where tbl_dt>=20240320 and path like '%EWP_FIN_LOG%' group by tbl_dt order by tbl_dt;
+
+=======Kamanja========
+
+KAMANJA_HOME=/opt/Flare/Flare_Prod
+conf=/mnt/beegfs/Flare_Prod/config
+dir=${KAMANJA_HOME}/lib/system
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+
+1)
+KAMANJA_HOME=/opt/Flare/Flare_Prod
+conf=/mnt/beegfs/Flare_Prod/config
+dir=${KAMANJA_HOME}/lib/system
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+
+
+
+
+java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c stop
+
+ps aux | grep 'com.ligadata.flare.fdi.FdiMain'
+
+===============
+
+/mnt/beegfs/Logs/Flare_Prod/Archive/
+
+KAMANJA_HOME=/opt/Flare/Flare_2.11-3.5.10.5186-20231008-1
+conf=/mnt/beegfs/Flare_Test/config/
+dir=${KAMANJA_HOME}/lib/system
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+
+java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c status
+==================
+
+
+for i in 10.111.12.12 10.111.12.13 10.111.12.14 10.111.12.15 10.111.12.16 10.111.12.17 10.111.12.18 10.111.12.19 10.111.12.20 10.111.12.21 10.111.12.22;do ssh  $i PGPASSWORD="3reDweUIJ38DFe1" psql -h 10.111.12.21 -d airflow -U dev_user -c "SELECT * FROM dag WHERE is_active = 'TRUE' AND is_paused = 'FALSE'" -t -F ',' -A > /mnt/beegfs/dags.csv ;done
+
+
+
+for i in 10.111.12.12 10.111.12.13 10.111.12.14 10.111.12.15 10.111.12.16 10.111.12.17 10.111.12.18 10.111.12.19 10.111.12.20 10.111.12.21 10.111.12.22 ;do ssh -q $i ls /data/data_lz/FdiBase/ ;done
