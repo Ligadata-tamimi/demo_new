@@ -1,0 +1,295 @@
+Appgate
+pass BD
+1Ts6w7VZ%Fc0
+
+ sftp -oPort=30040 admin@10.156.201.47:/BundleEvents
+
+Connections@@2024##
+
+appgate://securegate.mtn.co.ug/eyJwcm9maWxlTmFtZSI6IlVHX1NEUCIsInNwYSI6eyJtb2RlIjoiVENQIiwibmFtZSI6IlVHX1NlY3VyZV9HYXRlIiwia2V5IjoiZjhjODI4MWU0YWQxZGY4MTU1ZGY4ZmRiZGFjNDNkNzk4NjM5MWEzZmFlYTQwOThhZjM2M2IxMzI2MjUzODBlOCJ9LCJjYUZpbmdlcnByaW50IjoiZGUyYjY4YWMzZmE4NGEwZDM3OTk0NzRhNDA2Yzc5NGZhYjljZTJiMmRlMDRmMjBiNWY5NGIwNzg2Zjk3NDU4YSIsImlkZW50aXR5UHJvdmlkZXJOYW1lIjoiQXBwR2F0ZSJ9
+
+The customer id is below
+269510BBC6CF46F78713D8E81EA1D9BD-F9
+
+test nodes 
+ugdaaskeytest - 10.156.105.74 
+ugdaaskeytest2 - 10.156.105.75 
+ugdaaskeytest3 - 10.156.105.76
+
+/mnt/beegfs_bsl2/airflow_2/logs/dag_processor_manager/dag_processor_manager.log
+
+ mv `ls | head -10` /mnt/beegfs_bsl2/production/ftpin/PRS_1/ /mnt/beegfs_bsl2/production/ftpin/PRS/ 
+
+
+potgress audit ===========
+
+SELECT * from paudit.prestolog_all pa  where clusteridattrib = 'presto_ligadata' and uri like '%20230711%' and query ilike '%kpi.air_cdr_v_updated_cs18%';
+
+{"date":"20220813"}
+
+
+Passwords@@@1234
+
+
+sudo su - oracle
+sudo su - daasuser
+
+T0mimimimi@001
+
+tamimim
+
+
+sftp EVA_JUMO@10.156.115.120
+
+User: LigaData.vnc@gmail.com
+Pass:
+Ligadata@2020
+window passwd : 123456
+
+LigaData@2019
+
+Ambari
+reader
+P@ssw0rd@3211
+
+VPN
+tamimim
+Connections@@@4321
+Passwords$$4321
+VPNusername : tamimim
+== UG VNC ==
+Email: Mhtamimi11@gmail.com
+Pass: Tamimi@@123
+vnc@@2020
+
+API URL 
+Daas
+P@ssw0rd@1234
+
+Office
+m.tamimi@ligadata18.onmicrosoft.com
+QZ4X%PNtN(e7wp-
+
+winscp
+
+VNC
+email : mhtamimi11@gmail.com
+pass : Tamimi@@123
+
+VPN:
+MTNUGA\tamimim
+https://mtnonline.mtn.co.ug/Login.aspx
+
+shell user :
+mtamimi
+k9pN8mwu6fTY45yH@
+
+k9pN8mwu6fTY45yH@
+
+
+GMAIL_Password
+Tamimi@@@123
+212.88.98.34
+
+WinSCP:
+
+Software@654321
+qaderr
+Connections@@123456
+
+--- restart presto old ---
+cd /opt/presto/bin 
+./launcher restart
+
+
+cat /etc/passwd/
+
+=============hidden files ==============
+
+find . -type f -name ".*.sha" -exec rm -rf  {} \;
+
+=======presto_cli=======
+LD 
+/opt/presto/bin/presto --server 10.156.42.144:7099 --catalog hive --schema devdata
+MTN
+/opt/presto/bin/presto --server 10.156.42.178:6099 --catalog hive  -schema devdata
+
+====zabbix=====
+sudo systemctl restart zabbix-agent
+
+hdfs dfs -ls hdfs://daasug/user/daasuser/FlareData/Feeds/ER_Trans
+hdfs dfs -ls hdfs://daasug/user/daasuser/FlareData/Feeds/LOYALTY_EARN
+dbeaver
+jdbc:presto://ugmpdaasnode-28.mtn.co.ug:7766/hive?SSL=true&SSLKeyStorePath=c:/keystore2.jks&SSLKeyStorePassword=enzoslR722$&SSLTrustStorePath=c:/keystore2.jks&SSLTrustStorePassword=enzoslR722$
+
+================FDI and kamanja restart at node 10.156.42.141 ==============
+
+while true ; do find /source/production/ftpin/ -type f ! -name "*.tmp"  | wc -l ; sleep 5 ; done ;
+
+while true ; do find /data/data01/FdiBase/processed/ -type f ! -name "*.tmp"  | wc -l ; sleep 10 ; done ;
+
+while true ; do find /data/data01/FdiBase/reprocess/ -type f ! -name "*.tmp"  | wc -l ; sleep 10 ; done ;
+
+while true ; do find /data/data01/FdiBase/verified/ -type f ! -name "*.tmp"  | wc -l ; sleep 10 ; done ;
+
+=====hdfs paths=====
+
+working dir FDI : hdfs://daasug/user/daasuser/FlareData/Working/ADEPT/tbl_dt=2022120
+hdfs://daasug/encryption_zone/daasuser/FlareData/Feeds/ADEPT/tbl_dt=202212
+
+/mnt/share_point/Flare_dev/DataValidatorState/StateData/ADEPT/
+
+==========BSL TEST==========
+UG test bsl 
+node 175 bash /opt/flare_stg/flare_bsl_test/template/script/ForceStopKamanjaCluster.sh
+bash /opt/flare_stg/flare_bsl_test/template/script/StatusKamanjaCluster.sh
+
+=======Kamanja Test===========
+on 175
+dir=/opt/flare_stg/flare_test/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/beegfs_bsl2/flare_test/Run/Load/config/
+
+echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all  -c status\
+
+
+============New Test Cluster ===================
+/opt/Flare/Flare_Test/KAIT/input/CCN_CDR_CS18
+
+/opt/Flare/Flare_Test/KAIT/output/CCN_CDR_CS18
+
+ssh 10.156.42.219
+create these files to the feed
+
+mkdir -p  /data/data13/FdiBase/processed/CCN_CDR_CS18
+mkdir -p  /data/data13/FdiBase/reprocess/CCN_CDR_CS18
+mkdir -p /data/data13/FdiBase/live/CCN_CDR_CS18
+
+KAMANJA_HOME=/opt/Flare/Flare_Test
+conf=/mnt/beegfs_apidfs/Flare_Test/config
+dir=${KAMANJA_HOME}/lib/system
+cp=${dir}/KamanjaInternalDeps_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+
+java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/testLoadcluster_with_fdi.properties -s all -c stop
+java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/testLoadcluster_with_fdi.properties -s all -c start
+
+=================Steps remove one node from kamanja==================
+dir=/opt/flare_dev/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/beegfs_bsl2/Flare_dev/config
+
+echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all  -c stop
+
+1. vi /opt/flare_dev/config/ClusterConfig.json take the node ID 
+
+2.stop flare component
+
+3. hbase shell
+
+4. count the nodes before 
+
+count 'flare_prod:config_objects', INTERVAL=>1
+
+5.deleting the node from kamanja 
+
+addall 'Flare_prod:config_objects','nodeinfo.1'
+
+6.Making sure the node has been removed from the cluster
+
+count 'Flare_prod:config_objects', INTERVAL=>1
+count 'flare_dev:config_objects', INTERVAL=>1
+
+
+7. start flare compononet
+
+8. make sure the incoming count is decrasing 
+9.check kamanja log in case error if found 
+
+===============================================
+to restore the node upload the lastest config file 
+
+bash /opt/flare_dev/bin/kamanja upload cluster config /opt/flare_dev/config/ClusterConfig.json
+
+
+===============FIN LOG issues==================
+
+--To compare FID's
+select distinct (transactionid) from analytics.MTN_ECW_20221122 where type20 = '1' and trasnaction_type = 'PAYMENT' except select instruct_hdr_fid from feeds.fin_log_cfw
+where tbl_dt = 20221122 and instruct_hdr_type like 'PAYMENT'  ;
+
+==============Extract path checks=================
+cd /mnt/beegfs_bsl2/Tools/Extract/
+cat BIB_CONFIG_*/extract_BIB_CONFIG_*.sh |grep -i rm
+ cat FXL_*/extract*.sh |grep -i rm
+
+
+while true ; do find /source/production/ftpin/ -type f ! -name "*.tmp"  | wc -l ; sleep 10 ; done ;
+
+
+page is empty 
+
+ALTER TABLE devdata.ggsn_cdr DROP IF EXISTS PARTITION(tbl_dt=20221226);
+ALTER TABLE feeds.pm_rated_cdrs DROP IF EXISTS PARTITION(tbl_dt=20230212);
+
+
+node 89 >> check failed partitions
+
+spark-shell --driver-memory 4g --master local[32] -i /mnt/beegfs_bsl2/tamimi/par/DaasUgCheckParquetFilesMultiple.scala
+
+/* Editing Variable -- Start */
+   val inputTemplatePaths = Array[String](
+     
+      "hdfs://daasug/encryption_zone/daasuser/FlareData/Feeds/GGSN_CDR/tbl_dt=${yyyymmdd}/"
+
+    )
+    val outputFilePath = "/mnt/beegfs_bsl2/tamimi/par/OutputFilesPath/"
+   val startDate = 20221226
+   val endDate = 20221226
+    /* Editing Variable -- End */
+ 
+   sc.setLogLevel("ERROR")
+    val hadoopConfiguration: Configuration = sc.hadoopConfiguration
+    val checkParquetFiles = new CheckParquetFiles(hadoopConfiguration, 99)
+    checkParquetFiles.run(inputTemplatePaths, outputFilePath, startDate, endDate, 30)
+    
+    
+==========mongo============ node 139
+mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'
+
+mongo 10.156.116.70:27012/DTT -u dclm_eva -p 'DcLm@va#674'
+
+mongo 10.156.201.82:27012/DLMPROD -u dlm_prod_view -p 'dlmprodview$Wstv'  --eval "var cursor = db.LoyaltyEarn.find({dateTime: {\$gte: ISODate('2024-01-17T00:00:00.000Z'), \$lte: ISODate('2024-01-17T23:59:59.000Z')}}); while (cursor.hasNext()) {print(JSON.stringify(cursor.next()));}"  > /mnt/beegfs_bsl2/Tools/Extract/Mongo_Data/LoyaltyEarn/20240117/LoyaltyEarn_20240117.json
+    
+    
+    
+    ======loop======
+    
+    for i in 10.156.42.89 10.156.42.90 10.156.42.92 10.156.42.131 10.156.42.132 10.156.42.133 10.156.42.134 10.156.42.135 10.156.42.136 10.156.42.137 10.156.42.138 10.156.42.139 10.156.42.140 10.156.42.141 10.156.42.142 10.156.42.143 10.156.42.144 10.156.42.145 10.156.42.146 10.156.42.147 10.156.42.148 10.156.42.149 10.156.42.151 10.156.42.152 10.156.42.153 10.156.42.154 10.156.42.155 10.156.42.158 10.156.42.163 10.156.42.164 10.156.42.165 10.156.42.166 10.156.42.167 10.156.42.168 10.156.42.169 10.156.42.170 10.156.42.171 10.156.42.172 10.156.42.173 10.156.42.174 10.156.42.175 10.156.42.176 10.156.42.177 10.156.42.178 10.156.42.179 10.156.204.103 10.156.42.213 10.156.42.214 10.156.42.215 10.156.42.216 10.156.42.217 10.156.42.218 10.156.42.219 10.156.42.220 10.156.42.33 10.156.42.227 10.156.42.228 10.156.42.229 10.156.42.230 10.156.42.231 10.156.42.232 10.156.42.233 10.156.42.234 10.156.42.244 10.156.42.245 10.156.42.246 10.156.42.247 ; do ssh $i  df -h  /mnt/beegfs_backup  ;echo $i ;done 
+    
+    
+    
+    for i in 10.156.42.172 10.156.42.173 10.156.42.213 10.156.42.214 10.156.42.215 10.156.42.216 10.156.42.217 10.156.42.218 10.156.42.219 10.156.42.132 10.156.42.134 10.156.42.136 10.156.42.143 10.156.42.151 10.156.42.152 10.156.42.153 10.156.42.154 10.156.42.155 10.156.42.165 10.156.42.166 10.156.42.167 10.156.42.168 10.156.42.169 10.156.42.170 10.156.42.174 10.156.42.175 10.156.42.176 10.156.42.177 10.156.42.178 10.156.42.171 ; do ssh $i ls   ; done 
+    
+    
+    ==========create table from view==============
+    
+drop table  cfw.usage_momo_account_balance_base ;
+ CREATE EXTERNAL TABLE cfw.usage_momo_account_balance_base (
+  momo_acc_id bigint,
+  subscriber_id STRING,
+  profile STRING,
+  msisdn double,
+  main_balance double,
+  subacc_bal STRING,
+  last_bal_chg_date int)
+  PARTITIONED BY
+  (                                   
+ date_key int) 
+  ROW FORMAT SERDE                                   
+   'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'  
+ STORED AS INPUTFORMAT                              
+   'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'  
+ OUTPUTFORMAT                                       
+   'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat' 
+ LOCATION                                           
+   'hdfs://daasug/encryption_zone/daasuser/FlareData/CFW/usage_momo_account_balance_base' ;

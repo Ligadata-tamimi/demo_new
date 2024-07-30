@@ -1,0 +1,59 @@
+CM
+shell:
+
+dzdo su - daasuser
+
+tamimi_m
+HHCY4WWR^Cq%P345
+
+airflow
+user : ops_user
+pass:ops_user@123
+
+VPN:
+
+appgate://mysecuregate.mtncameroon.net/eyJwcm9maWxlTmFtZSI6Ik1UTkNfM3JkX1BhcnR5Iiwic3BhIjp7Im1vZGUiOiJVRFAtVENQIiwibmFtZSI6Im10bmNfM3JkX3BhcnR5X1NQQSIsImtleSI6ImVhYjIxOTRkNzA5ZDI3NzJlMTEyOWQ4OWE1M2MzZTZkY2NhNDNlNDJjNGFjMjU1NTdjNjI5MjY3YTEzNWU3NzgifSwiY2FGaW5nZXJwcmludCI6ImRjNTEwM2RiZmMxYTlmMjEwMzRiMGJkMDYxNGUxYWIxYTExMTUyOGM0OTZiMjAxZTRhODZmOWVhZTcyNjcwZWYiLCJpZGVudGl0eVByb3ZpZGVyTmFtZSI6Ik1UTi1BRF9FeHRlcm5hbCJ9
+
+alzukimi_m
+K@mal1234567890+...!!1234
+
+majzoub_a
+%Xsp85Ft7$rB8U&ABD2
+=========no vpn sharing=================
+
+VPNEVA_Tamimi_M
+
+8TB0@PHYnRDH#hi
+
+
+select tbl_dt,count(*) from feeds.dim_operatos where tbl_dt between 20240301 and 20240329 group by 1 order by 1 ;
+
+
+airflow celery flower --url-prefix=flower 
+
+for i in 10.144.53.10 10.144.53.20 10.144.53.11 10.144.53.21 10.144.53.12 10.144.53.22  10.144.53.202 10.144.53.103 10.144.53.204 10.144.53.105 10.144.53.206 10.144.53.107 10.144.53.208 10.144.53.109 10.144.53.210 10.144.53.111 10.144.53.212 10.144.53.113 10.144.53.214 ; do ssh $i iperf3 -c 10.144.53.101  ;done
+
+on edge1
+
+dir=/opt/Flare_Prod/lib/system/
+cp=${dir}/ExtDependencyLibs2_2.11.jar:${dir}/ExtDependencyLibs_2.11.jar:${dir}/FlareControlManager_2.11.jar
+conf=/mnt/beegfs/Flare_Prod/config
+
+
+echo '\n' |java -cp ${cp} com.ligadata.flare.FlareControlManager --configFile ${conf}/prodLoadcluster_with_fdi.properties -s all -c stop
+
+============presto=============
+
+/opt/presto/bin/presto --server 10.144.53.21:8099 --catalog hive --schema feeds --user daasuser --schema  feeds --output-format  CSV_HEADER
+
+/opt/presto/bin/presto --server 10.144.53.21:8099 --catalog hive --schema feeds --user daasuser
+
+=======minitar====
+
+bash /mnt/beegfs/Tools/FILE_OPS/minitar.sh
+
+
+0 1 * * * bash /home/daasuser/ops_scripts/benchamrk.sh
+*/15 * * * * bash /mnt/beegfs/Tools/FILE_OPS/verified_to_Archived.sh
+0 8 * * * bash /mnt/beegfs/Tools/FILE_OPS/line_count_from_lz.sh
+0 * * * * bash /mnt/beegfs/Tools/Hourly_Checks/bin/run.sh
