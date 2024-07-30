@@ -1,7 +1,7 @@
 please check your OS account on Zambia
 link to reset the password
 
-New-git
+New-gits
 
 https://selfservice.mtn.zm
 
