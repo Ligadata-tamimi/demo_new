@@ -1,0 +1,1183 @@
+{
+  "global.config": {
+    "use.proxy": false,
+    "data.handlers.max.idle.time.in.sec":300,
+    "threads.count.for.get.index":2,
+    "load.new.config.interval.in.secs": 300,
+    "request.default.max.results": 100000,
+    "request.default.page.size": 10000,
+    "dump.schema.info.to.file": "/tmp/schemaInfo.txt",
+    "path.prefix.replacements": {"file:/mnt/beegfs_master": "file:/mnt/beegfs_apidfs"
+    },
+    "request.cache.expire.time.in.secs": 1800
+  },
+  "locations.config": [
+    {
+      "name": "empty-local-config",
+      "config": {}
+    },
+    {                                               
+      "name": "hdfs-config",
+      "config": {
+        "HostLists": [
+          "hdfs://daasza"
+        ],
+        "_Principal": "daasuser@MTN.COM",
+        "_Keytab": "/path/to/daasuser.keytab",
+        "HadoopConfig": {                    
+            "dfs.nameservices": "daasza",
+            "dfs.ha.namenodes.daasza": "nn1,nn2",
+            "dfs.namenode.rpc-address.daasza.nn1": "flabigrpa33.mtn.co.za:8020",
+            "dfs.namenode.rpc-address.daasza.nn2": "flabigrpa34.mtn.co.za:8020",
+            "dfs.client.failover.proxy.provider.daasza": "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider"
+        }
+      }
+    }
+],
+  "physical.feeds.config": [
+{                         
+      "name": "recharges",
+      "id": 1,
+      "buckets": 4096,
+      "timezone.offsets": "+3",
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/recharges/summary",
+             "external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/recharges/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [                         
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [       
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },
+        {
+      "name": "ccn_cdr_ma",
+      "id": 2,
+      "buckets": 2048,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_cdr_ma/summary",
+             "external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_cdr_ma/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]                                
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [                          
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },
+        {                
+      "name": "ccn_cdr_da",
+      "id": 3,
+      "buckets": 4096,
+      "locations": {                               
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_cdr_da/summary",
+            "external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_cdr_da/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },
+        {
+      "name": "ccn_cdr_uc",
+      "id": 4,
+      "buckets": 2048,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_cdr_uc/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_cdr_uc/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },
+        {
+      "name": "sdp_adjustments",
+      "id": 5,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/sdp_adjustments/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/sdp_adjustments/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },
+        {
+      "name": "ccn_api",
+      "id": 6,
+      "buckets": 8192,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_api/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/ccn_api/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },
+        {
+      "name": "prs_api",
+      "id": 7,
+      "buckets": 8192,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/prs_api/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/prs_api/migration_files",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]                                                   
+    },{                           
+      "name": "lea_unrated_usage_report_api",
+      "id": 8,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {                                      
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api/migration_files",            
+"weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          },
+ {
+            "type": "LD_ENCR_SAN",
+            "location": "file:///leaapi/API/production/apidata/cdrs/lea_unrated_usage_report_api/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api/migration_files",
+"weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]                                    
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{                           
+      "name": "lea_unrated_usage_report_api_incoming",
+      "id": 9,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api_incoming/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api_incoming/migration_files",       
+     "weight": 6,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          },
+  {
+            "type": "LD_ENCR_SAN",
+            "location": "file:///leaapi/API/production/apidata/cdrs/lea_unrated_usage_report_api_incoming/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api_incoming/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {           
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }                            
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "momo_subscriber",
+      "id": 10,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/momo_subscriber/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/momo_subscriber/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "lea_security_imei_report",
+      "id": 11,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_security_imei_report/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_security_imei_report/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "sys_processed_time",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "lea_security_imei_report_api",
+      "id": 12,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_security_imei_report_api/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_security_imei_report_api/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "sys_processed_time",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    }
+,{
+      "name": "bss_api_pin_reset_history",
+      "id": 15,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_api_pin_reset_history/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_api_pin_reset_history/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_meau",
+      "id": 16,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_meau/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_meau/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time",
+        "msisdn"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_bundle_subscription",
+      "id": 17,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_bundle_subscription/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_bundle_subscription/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_rms_subscription",
+      "id": 18,
+      "buckets": 512,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_rms_subscription/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_rms_subscription/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_momo_reversal",
+      "id": 19,
+      "buckets": 512,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_momo_reversal/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_momo_reversal/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_easy_load",
+      "id": 13,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_easy_load/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_easy_load/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_ayo_insurance",
+      "id": 20,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_ayo_insurance/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_ayo_insurance/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time",
+        "date_key",
+        "has_ayo_recharge_with_care"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_easy_load",
+      "id": 21,
+      "buckets": 4096,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_easy_load/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_easy_load/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "original_timestamp_enrich",
+        "sys_processed_time"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "bss_momo_reversal_pin_reset_history",
+      "id": 22,
+      "buckets": 512,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_momo_reversal_pin_reset_history/summary",
+"external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/bss_momo_reversal_pin_reset_history/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+"config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key",
+        "event_timestamp_enrich",
+        "sys_processed_time",
+        "date_key"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "customer_segmentation",
+      "id": 23,
+      "buckets": 2048,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/customer_segmentation/summary",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+"config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        "msisdn_key"
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "device_finance_model",
+      "id": 24,
+      "buckets": 1024,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/device_finance_model/summary",
+            "external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/device_finance_model/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+"config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    },{
+      "name": "device_finance_model_per_hashed_msisdn",
+      "id": 25,
+      "buckets": 1024,
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/device_finance_model_per_hashed_msisdn/summary",
+            "external.monitor.location":"file:///mnt/beegfs_apidfs/API/production/apidata/cdrs/device_finance_model_per_hashed_msisdn/migration_files",
+     "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+"config": {
+               "encryption.config":{
+                  "enc.kms.url":"http://ugaodidevuat.mtn.co.ug:9292",
+                  "enc.kms.username":"devkey",
+                  "enc.kms.password":"xcOOXH-p9mKG8O8=",
+                  "enc.kms.zone.name":"devkey",
+                  "enc.kms.cipher.gcm":false
+
+                      }
+                   }
+          }
+
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [
+        
+      ],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": [
+        "msisdn"
+      ]
+    }
+  ],
+    "__local.sync": {
+    "api_local_default_retention_period_days": "240",
+    "api_local_full_scan_interval_ms": "1800000",
+    "api_remote_inactivity_scan_interval_ms": "1800000",
+    "api_remote_inactivity_duration_ms": "1200000",
+    "api_storage_tier1_local_dir": "/leaapi/API/production/apidata/cdrs",
+    "api_remote_feeddirs":"/mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api_incoming,/mnt/beegfs_apidfs/API/production/apidata/cdrs/lea_unrated_usage_report_api"
+  }
+
+}

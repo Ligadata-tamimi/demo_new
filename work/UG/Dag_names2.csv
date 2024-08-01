@@ -1,0 +1,5 @@
+BSS_API_RUN	t	f	t	2023-06-07 12:34:47.20712+03	\N	2022-05-11 10:27:57.384832+03	\N	\N	/mnt/beegfs_bsl2/airflow/dags/BSS_API.py	daasuser	\N	\N	"10 07 * * *"	\N
+HUAWEI_XML_FEEDS	t	f	t	2023-06-07 12:34:04.487951+03	\N	\N	\N	\N	/mnt/beegfs_bsl2/airflow/dags/HUAWEI_XML_FEEDS.py	airflow	\N	\N	" 30 * * * * "	\N
+Split_Subscriber_Dump_Offer	t	f	t	2023-06-07 12:34:42.072522+03	\N	\N	\N	\N	/mnt/beegfs_bsl2/airflow/dags/split_tools.py	daasuser	\N	\N	"*/30 * * * *"	\N
+HSDP_AIREXTCONV	t	f	t	2023-06-07 12:34:29.896759+03	\N	\N	\N	\N	/mnt/beegfs_bsl2/airflow/dags/UG_hsdp_AIRExtConv.py	airflow	\N	\N	" 45 0-1,6-23 * * * "	\N
+Automation_Group_2_NEW_VR	t	f	t	2023-06-07 12:34:30.96885+03	\N	\N	\N	\N	/mnt/beegfs_bsl2/airflow/dags/UG_Automation_Group_2.py	daasuser	\N	\N	"15 5 * * *"	\N

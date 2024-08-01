@@ -1,0 +1,133 @@
+#!/bin/bash
+
+startdate=$1
+enddate=$2
+stream=$3
+
+rundate=$startdate
+commontdir=/mnt/beegfs_bsl2/Tools/runPrestoFile
+#mkdir $commontdir/log/$startdate
+#logdir=$commontdir/log/$startdate
+sqldir=$commontdir/sql
+sqlexecdir=$commontdir/tmp
+#logfile=$logdir/$stream$startdate$enddate".out"
+sqltemplatefile=$sqldir/$stream".sql"
+sqlfile=$sqlexecdir/$stream".sql"
+cgidate=20190430
+#Validate if startdate is greater or equal than end date due to the script running backwards from largest to smallest date
+if [ $startdate -gt $enddate ]
+then
+echo "Startdate cannot be greater than enddate. First date parameter cannot be greater than second date parameter."
+exit
+fi
+
+if [ ${#startdate} -gt 8 ]
+then
+echo "Start Date is in valid format (YYYYMMDD)"
+exit
+fi
+
+
+if [ ${#enddate} -gt 8 ]
+  then echo "enddate Date is in valid format (YYYYMMDD)"
+exit
+fi
+
+
+
+
+while [ $rundate -le $enddate ]
+do
+epocdate=$(date  '+%s')
+
+if [[ ! -e $commontdir/log/$rundate ]]; then
+    mkdir $commontdir/log/$rundate
+fi
+
+logdir=$commontdir/log/$rundate
+logfile=$logdir/$stream$startdate$enddate$epocdate".out"
+
+
+
+echo " ----Run start for "$stream" for period "$startdate" --> "$enddate". "`date +"%Y.%m.%d-%H:%M:%S"`"----" &>>$logfile
+
+echo $rundate &>>$logfile
+
+
+#Copy the template and change date
+cp $sqltemplatefile $sqlfile
+sed -i "s/yyyymmdd/$rundate/g" $sqlfile
+ydate=$(date -d "$rundate -1 days " +'%Y%m%d')
+#ydate=$(date -d "$rundate -1 days " +'%Y%m%d')
+y90day=$(date -d "$rundate -89 days " +'%Y%m%d')
+y91day=$(date -d "$rundate -91 days " +'%Y%m%d')
+y30day=$(date -d "$rundate -29 days " +'%Y%m%d')
+tdate=$(date -d "$rundate +1 days " +'%Y%m%d')
+vmonth=$(date -d "$rundate +1 days " +'%Y%m')
+vday1=$(date -d "$rundate +1 days " +'%d')
+vday_1=$(date -d "$rundate +1 days " +'%Y%m%d')
+y20day=$(date -d "$rundate -19 days " +'%Y%m%d')
+y21day=$(date -d "$rundate -20 days " +'%Y%m%d')
+y7day=$(date -d "$rundate -6 days " +'%Y%m%d')
+y10day=$(date -d "$rundate -9 days " +'%Y%m%d')
+y11day=$(date -d "$rundate -10 days " +'%Y%m%d')
+monthago=$(date -d "$rundate -0 days " +'%Y%m')
+monthago1tmp=${monthago}01
+y1month=$(date -d "$monthago1tmp -1 days " +'%Y%m')
+y2month=$(date -d "$monthago1tmp -40 days " +'%Y%m')
+Yearmonth=$(date -d "${rundate}  " +'%Y%m')
+Y7_date=$(date -d "$rundate -7 days " +'%Y%m%d')
+y6month=$(date -d "$rundate -180 days " +'%Y%m%d')
+#monthago2=($rundate '+%Y%m%d' --date="2 month ago")
+y2day=$(date -d "$rundate -2 days " +'%Y%m%d')
+svp_last_day_ofmonth=$(date -d "$startdate +1 month -1 day" +%Y%m%d)
+
+
+#yest=$(date -d "$date -7 days " +'%Y%m%d')
+
+tyyyyDateFiormat=$(date -d "$rundate" +'%Y-%m-%d')
+sed -i "s/Y7_date/$Y7_date/g" $sqlfile
+sed -i "s/Yearmonth/$Yearmonth/g" $sqlfile
+sed -i "s/ydate/$ydate/g" $sqlfile
+sed -i "s/cgidate/$cgidate/g" $sqlfile
+sed -i "s/y90date/$y90day/g" $sqlfile
+sed -i "s/y91date/$y91day/g" $sqlfile
+sed -i "s/y30date/$y30day/g" $sqlfile
+sed -i "s/tdate/$tdate/g" $sqlfile
+sed -i "s/yyyyDateFiormat/$tyyyyDateFiormat/g" $sqlfile
+sed -i "s/vmonth/${vmonth}01/g" $sqlfile
+sed -i "s/vday1/${vday1}/g" $sqlfile
+sed -i "s/vday_1/${vday_1}/g" $sqlfile
+sed -i "s/y11date/$y11day/g" $sqlfile
+sed -i "s/y2day/$y2day/g" $sqlfile
+sed -i "s/y10date/$y10day/g" $sqlfile
+sed -i "s/y20date/$y20day/g" $sqlfile
+sed -i "s/y21date/$y21day/g" $sqlfile
+sed -i "s/y1month/$y1month/g" $sqlfile
+sed -i "s/y2month/$y2month/g" $sqlfile
+sed -i "s/y7day/$y7day/g" $sqlfile
+sed -i "s/y6month/$y6month/g" $sqlfile
+sed -i "s/svp_last_day_ofmonth/$svp_last_day_ofmonth/g" $sqlfile
+
+#Remove partition date
+#hadoop fs -ls -C hdfs://ngdaas/user/hive/nigeria/$stream/tbl_dt=$rundate* | awk '{print "fs -rm -f "$0}' | xargs hadoop &>> $logfile
+echo `date +"%Y.%m.%d-%H:%M:%S"` &>>$logfile
+/bin/id  &>> $logfile
+#Run presto SQL to insert the partition that was remove above
+
+echo " ----Run start for "$stream" for period "$startdate" --> "$enddate". "`date +"%Y.%m.%d-%H:%M:%S"`"----"
+
+/opt/presto/bin/presto --server  ugmpdaasenode-01:7099 --catalog hive --schema devdata --output-format CSV_HEADER --debug -f $sqlfile &>> $logfile
+echo `date +"%Y.%m.%d-%H:%M:%S"` &>>$logfile
+
+extractedRecordsNo=$(cat $logfile | grep "facebook")
+if [[ ${#extractedRecordsNo} -gt 0  ]]; then
+echo "ERROR in $3 for date $rundate please check the log on  $logfile the ERROR is $extractedRecordsNo"
+ssh 10.156.42.131 "echo 'CronJob "run_cfw_cron.sh" Failed at $(date +"%Y-%m-%d_%H:%M:%S") for day: $date \n' | mail -r 'DAAS_Note_UG@mtn.com' -s 'DAAS_Note_MTN_UG_<Insert $3 CFW Data Failed for $date at $(date +"%Y-%m-%d %H:%M:%S")>' '$emails' "
+fi
+rundate=$( date -d"$rundate +1 day" +%Y%m%d )
+
+done
+echo " ----Run end for "$stream" for period "$startdate" --> "$enddate". "`date +"%Y.%m.%d-%H:%M:%S"`"----" &>>$logfile
+
+exit

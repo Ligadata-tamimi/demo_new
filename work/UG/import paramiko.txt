@@ -1,0 +1,101 @@
+import paramiko
+import pandas as pd
+import os, json
+from datetime import datetime
+import argparse
+
+output_file = f"/mnt/beegfs_master2/Tools/qos/scripts/service_version/outputs/output_{datetime.today():%Y%m%d}.csv"
+output_html_file=f"/mnt/beegfs_master2/Tools/qos/scripts/service_version/outputs/output_{datetime.today():%Y%m%d}.html"
+
+directory_to_clear = '/mnt/beegfs_master2/Tools/qos/scripts/service_version/outputs/'
+for filename in os.listdir(directory_to_clear):
+    file_path = os.path.join(directory_to_clear, filename)
+    if os.path.isfile(file_path):
+        os.remove(file_path)
+
+def get_etc_hostnames():
+    """ Parses /etc/hosts file and returns all the hostnames in a list. """
+    with open('/etc/hosts') as f:
+        hostlines = f.readlines()[2:]
+    hostlines = [line.strip() for line in hostlines
+                 if not line.startswith('#') and line.strip() != '' and 'localhost' not in line]
+    #print(hostlines)
+    #hosts = []
+    #for line in hostlines:
+    hosts = [line.strip('\n ').split()[0] for line in hostlines if line]
+    #hosts.extend(hostnames)
+    print(hosts)
+    return hosts
+
+
+def load_commands(path):
+    with open(path) as file:
+        return json.load(file)
+
+
+def loop_and_execute(commands):
+    ips = get_etc_hostnames()
+    client = paramiko.SSHClient()
+
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    all_nodes = {}
+    commands_nodes = {}
+    try:
+        for ip in ips:
+            client.connect(ip.strip("\n"))
+            print(f"connected to node {ip}")
+
+            for label, command in commands.items():
+                cmd = command.strip("\n").strip("'")
+                stdin, stdout, stderr = client.exec_command(cmd)
+
+                #commands_nodes[label] = {}
+                #x = stdout.channel.recv_exit_status()
+                # commands_nodes[label]['status_code'] = x if x != '' else '1'
+
+                commands_nodes[label] = [
+                    x.strip("[").strip("]").strip("\n").strip("'").strip("\"").replace('\\n', "").strip(
+                        "\"") if x != '' else "Command Not Exist or Application Not installed"
+                    for x in stdout.readlines()]
+                result = commands_nodes[label][0] if commands_nodes[label] else commands_nodes[label]
+                commands_nodes[label] = '.'.join(result.split('.')[:3]) if type(result) is str else '.'.join(result[:3])
+                
+                # Add fillna() function to replace NaN values with "service not found"
+                commands_nodes[label] = commands_nodes[label].fillna("service not found")
+
+            client.close()
+            all_nodes[ip] = commands_nodes
+            # del client, stdin, stdout, stderr
+            print(f"Connection closed to Node {ip}")
+
+    except Exception as e:
+        print(e)
+        print(f"for {ip}")
+    finally:
+        client.close()
+        del client, stdin, stdout, stderr
+
+    return all_nodes
+
+
+def main(args):
+    if not os.path.exists('./outputs'):
+        os.mkdir('./outputs')
+
+    commands = load_commands(args.commands)
+    results = loop_and_execute(commands)
+
+    df = pd.DataFrame(results)
+    print(df.head())
+
+    df.to_csv(output_file)
+    print(output_file)
+    df.to_html(output_html_file)
+    print(output_html_file)
+    
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--commands", type=str, required=True, help="path to the commands .txt file.")
+    args = parser.parse_args()
+    main(args)
+
